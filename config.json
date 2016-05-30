@@ -1,0 +1,4 @@
+{
+    "mongoConnectString": "mongodb://localhost:27017/peach_forum",
+    "port": 9090
+}
