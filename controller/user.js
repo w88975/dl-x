@@ -24,7 +24,7 @@ module.exports = function(app) {
                 });
             },
             function(cb) {
-                dbMan.count('users',{userName: name}, function(err, length) {
+                dbMan.count('users',{userName: name,isDelete: false}, function(err, length) {
                     if (length <= 0) {
                         return cb(null,true);
                     }

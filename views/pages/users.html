@@ -27,12 +27,15 @@
                                 <tbody>
                                     <% for (var i = 0; i < userlist.length; ++i) {%>
                                     <tr>
+                                        <form method="post">
                                         <td><%=i+1%></td>
                                         <td><%=userlist[i].userName%></td>
                                         <td><%=userlist[i].userPwd%></td>
                                         <td><%= (new Date(Number(userlist[i].regTime)).toLocaleDateString())%></td>
                                         <td><% if(userlist[i].isAdmin) {%>是<%}else{%>否<%}%></td>
-                                        <td><button type="button" class="btn btn-danger btn-xs">删除</button></td>
+                                        <input type="hidden" name="uid" value="<%=userlist[i].customId%>">
+                                        <td><button type="submit" class="btn btn-danger btn-xs">删除</button></td>
+                                        </form>
                                     </tr>
                                     <% } %>
                                 </tbody>

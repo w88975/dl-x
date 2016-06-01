@@ -13,6 +13,13 @@ module.exports = {
         _table_instance.save(function(err){cb(err)});
     },
 
+    update: function(table,conditions,params,cb) {
+        var _model = mongoose.model(table,schemas[table]);
+        _model.update(conditions,params,{multi: true},function(err,results) {
+            cb(err,results);
+        });
+    },
+
     find: function(table,params,cb) {
         var _model = mongoose.model(table,schemas[table]);
         _model.find(params,function(err,results){cb(err, results)});
