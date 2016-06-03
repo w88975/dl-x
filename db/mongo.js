@@ -20,9 +20,15 @@ module.exports = {
         });
     },
 
-    find: function(table,params,cb) {
+    find: function(table,params,page,pagelength,cb) {
         var _model = mongoose.model(table,schemas[table]);
-        _model.find(params,function(err,results){cb(err, results)});
+        if (typeof page === 'number' && typeof pagelength === 'number') {
+
+        }
+        _model.find(params,function(err,results){
+            typeof page === 'function' ? page(err, results) : 0;
+            typeof cb === 'function' ? cb(err, results) : 0;
+        });
     },
 
     count: function(table,params,cb) {
