@@ -1,3 +1,8 @@
+<style>
+    .fancy {
+        text-align: center;
+    }
+</style>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">模板列表</h1>
@@ -18,8 +23,9 @@
                                     <tr>
                                         <th>#</th>
                                         <th>模板名称</th>
-                                        <th>模板背景</th>
+                                        <th style="width:200px;">模板背景(点击放大该图片)</th>
                                         <th>添加时间</th>
+                                        <th>选择模板</th>
                                         <th>删除</th>
                                     </tr>
                                 </thead>
@@ -29,9 +35,14 @@
                                         <form method="post">
                                         <td><%=i+1%></td>
                                         <td><%=tempList[i].tempName%></td>
-                                        <td><a class="fancy" href="<%=tempList[i].bgUrl%>"><img src="<%=tempList[i].bgUrl%>" height="50"></a></td>
+                                        <td>
+                                            <a class="fancy" href="<%=tempList[i].bgUrl%>">
+                                                <p><img src="<%=tempList[i].bgUrl%>" height="50"></p>
+                                            </a>
+                                        </td>
                                         <td><%= (new Date(Number(tempList[i].createTime)).toLocaleDateString())%></td>
                                         <input type="hidden" name="uid" value="<%=tempList[i].id%>">
+                                        <td><a href="/usetemp?id=<%=tempList[i].id%>" class="btn <% if (tempList[i].id === tempId) {%>btn-warning<% }else{ %>btn-success<%}%> btn-xs"> <% if (tempList[i].id === tempId) {%>当前模板<% }else{ %>选择该模板<%}%></a></td>
                                         <td><button type="submit" class="btn btn-danger btn-xs">删除</button></td>
                                         </form>
                                     </tr>
@@ -48,6 +59,6 @@
 
 <script>
     setTimeout(function(){
-        
+
     },10);
 </script>

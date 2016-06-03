@@ -14,6 +14,8 @@ module.exports = function(app) {
                 res.clearCookie('oid');
                 res.cookie('oid', rows[0].id);
                 return res.redirect('/index');
+            } else {
+                return res.render('pages/login.html',{layout: null,msg:'账号或密码错误!'});
             }
         })
     })

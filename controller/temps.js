@@ -4,8 +4,11 @@ module.exports = function(app) {
     app.get(['/temps'],function(req,res) {
         ckLogin(req,res,function(t,uname) {
             if (t) {
+                var userId = req.cookies.oid;
                 sql.all('select * from temps where isDelete=0;',function(err,rows) {
-                    res.render('pages/temps.html',{layout: 'pages/layout.html',tempList:rows,userName: uname });
+                    sql.all('select tempId from users where id=' + userId + ';',function(err,tids) {
+                        res.render('pages/temps.html',{layout: 'pages/layout.html',tempList:rows,userName: uname,tempId:tids[0].tempId });
+                    })
                 });
             } else {
                 res.redirect('/login');
@@ -16,8 +19,9 @@ module.exports = function(app) {
     app.post(['/temps'],function(req,res) {
         ckLogin(req,res,function(t,uname) {
             if (t) {
-                sql.all('select * from temps where isDelete=0;',function(err,rows) {
-                    res.render('pages/temps.html',{layout: 'pages/layout.html',tempList:rows,userName: uname });
+                var uid = req.body.uid;
+                sql.all('update temps set isDelete = 1 where id=' + uid + ';',function(err,rows) {
+                    res.redirect('/temps');
                 });
             } else {
                 res.redirect('/login');
@@ -54,5 +58,33 @@ module.exports = function(app) {
                 res.redirect('/login');
             }
         });
+    });
+
+
+    // 选择模板
+
+    app.get(['/usetemp'],function(req,res) {
+        ckLogin(req,res,function(t,uname) {
+            if (t) {
+                var id = req.query.id;
+                var userId = req.cookies.oid;
+                sql.all('update users set tempId=' + id + ' where id=' + userId + ';',function(err,rows){
+                    if (!err) {
+                        return res.redirect('/usetemp_s');
+                    } else {
+                        return res.redirect('/usetemp_f');
+                    }
+                })
+            } else {
+                res.redirect('/login');
+            }
+        });
+    });
+
+    app.get(['/usetemp_s','/usetemp_f'],function(req,res) {
+        if (req.path === '/usetemp_s') {
+            return res.send('<script>alert("设置模板成功!");window.location.href="/temps";</script>')
+        }
+        res.send('<script>alert("设置模板失败!");window.location.href="/temps";</script>')
     });
 };
