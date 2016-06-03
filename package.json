@@ -20,6 +20,7 @@
     "express-partials": "^0.3.0",
     "mongoose": "^4.4.14",
     "multer": "^0.1.8",
+    "rd": "0.0.2",
     "require-dir": "^0.3.0",
     "sqlite3": "^3.1.4"
   }
