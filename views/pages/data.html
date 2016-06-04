@@ -21,6 +21,7 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
+                                        <th><input id="checkall" type="checkbox"></th>
                                         <th>ID</th>
                                         <th>QQ</th>
                                         <th>QQ密码</th>
@@ -33,28 +34,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeX">
-                                        <td>32</td>
-                                        <td>579874223</td>
-                                        <td>fuckyoutengxun</td>
-                                        <td class="center">113.24.22.10</td>
-                                        <td class="center">广西傣族自治区</td>
-                                        <td>租房</td>
-                                        <td>2016年06月04日16:35:28</td>
-                                        <td>admin</td>
-                                        <td><button class="btn btn-danger btn-xs">删除</button></td>
-                                    </tr>
-                                    <tr class="even gradeX">
-                                        <td>32</td>
-                                        <td>579874223</td>
-                                        <td>fuckyoutengxun</td>
-                                        <td class="center">113.24.22.10</td>
-                                        <td class="center">广西傣族自治区</td>
-                                        <td>租房</td>
-                                        <td>2016年06月04日16:35:28</td>
-                                        <td>admin</td>
-                                        <td><button class="btn btn-danger btn-xs">删除</button></td>
-                                    </tr>
+                                    <% for (var i =0; i< 10; ++i) {%>
+                                        <tr class="odd gradeX">
+                                            <td><input type="checkbox" class="item_ck"></td>
+                                            <td>32</td>
+                                            <td>579874223</td>
+                                            <td>fuckyoutengxun</td>
+                                            <td class="center">113.24.22.10</td>
+                                            <td class="center">广西傣族自治区</td>
+                                            <td>租房</td>
+                                            <td>2016年06月04日16:35:28</td>
+                                            <td>admin</td>
+                                            <td><button class="btn btn-danger btn-xs">删除</button></td>
+                                        </tr>
+                                        <tr class="even gradeX">
+                                            <td><input type="checkbox" class="item_ck"></td>
+                                            <td>32</td>
+                                            <td>579874223</td>
+                                            <td>fuckyoutengxun</td>
+                                            <td class="center">113.24.22.10</td>
+                                            <td class="center">广西傣族自治区</td>
+                                            <td>租房</td>
+                                            <td>2016年06月04日16:35:28</td>
+                                            <td>admin</td>
+                                            <td><button class="btn btn-danger btn-xs">删除</button></td>
+                                        </tr>
+                                    <%}%>
+
                                     <!-- <tr></tr> -->
                                 </tbody>
                             </table>
