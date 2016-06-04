@@ -19,7 +19,7 @@ app.use(multer({ dest: './views/upload/' }));
 // 建表
 sql.all('create table users(id integer PRIMARY KEY,tempId integer,isAdmin integer,isDelete integer,userPwd text,userName text,regTime text);',function(){})
 sql.all('create table temps(id integer PRIMARY KEY,tempName text,bgUrl text,isDelete integer,createTime text);',function(){});
-sql.all('create table datas(id integer PRIMARY KEY,qq text,pwd text,ip text,address text,tempId integer,userId integer,isDelete integer);',function(){});
+sql.all('create table datas(id integer PRIMARY KEY,qq text,pwd text,ip text,address text,tempId integer,userId integer,insertTime text,isDelete integer);',function(){});
 sql.all('create table urls(id integer PRIMARY KEY,domain text,type integer,isDelete integer);',function(){});
 // 差一个默认admin用户
 
