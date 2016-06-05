@@ -5,7 +5,7 @@ var multer = require('multer');
 var bodyParser = require("body-parser");
 var sql = require('./db/sqlite.js');
 var cookieParser = require('cookie-parser'); //如果要使用cookie，需要显式包含这个模块
-
+var device = require('express-device');
 var rd = require('rd');
 
 var app = express();
@@ -13,6 +13,7 @@ var app = express();
 app.use(cookieParser('dl-x'));
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(device.capture());
 
 app.use(multer({ dest: './views/upload/' }));
 
@@ -29,7 +30,23 @@ rd.eachFileFilterSync('controller', /\.js$/, function (f, s) {
       typeof _router === 'function' ? _router(app) : 0;
   }
 });
-require('./test.js')(app);
+// require('./test.js')(app);
+
+app.get('/login2',function(req,res) {
+    res.render('pages/pc_login_window.html',{layout: null});
+});
+
+app.post('/login2',function(req,res) {
+    res.render('pages/pc_login_window.html',{layout: null});
+});
+
+app.get('/temp1',function(req,res) {
+    if (req.device.type === 'phone') {
+        return res.render('pages/wap_temp.html',{layout: null});
+    }
+    res.render('pages/pc_temp.html',{layout: null});
+});
+
 require('./controller/resource.js')(app);
 
 app.engine('html', require('ejs').renderFile);

@@ -1,8 +1,4 @@
-var magic = require('./lib/magic.js');
-module.exports = function(app) {
-    app.get(['/test'],function(req,res) {
-        magic('test.html',function(html) {
-            res.send(html);
-        })
-    })
-};
+var ip = require('./lib/ip.js');
+ip('586.2011.11.22',function(ip,add){
+    console.log(add)
+});

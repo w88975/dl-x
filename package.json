@@ -17,10 +17,12 @@
     "cookie-parser": "^1.4.3",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "express-device": "^0.4.2",
     "express-partials": "^0.3.0",
     "mongoose": "^4.4.14",
     "multer": "^0.1.8",
     "rd": "0.0.2",
+    "request": "^2.72.0",
     "require-dir": "^0.3.0",
     "sqlite3": "^3.1.4"
   }

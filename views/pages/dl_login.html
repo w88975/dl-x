@@ -1,0 +1,148 @@
+@{
+    ViewBag.Title = "dlk";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: #fff;
+        }
+
+        .login {
+            background: url(tpl/l.png) no-repeat;
+            width: 622px;
+            height: 368px;
+        }
+
+        .login_main {
+            padding: 72px 0 0 315px;
+        }
+
+        .login input {
+            margin: 3px 0 0 30px;
+            padding: 10px 0 8px 0px;
+            height: 18px;
+            width: 215px;
+            font-size: 16px;
+            background: 0;
+            border: 0;
+            outline: 0;
+        }
+
+        .alert {
+            width: 248px;
+            height: 28px;
+            margin: 0 0 3px 0;
+            color: red;
+        }
+
+        .username_div {
+            width: 249px;
+            height: 42px;
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat 0px -369px;
+        }
+
+        .password_div {
+            width: 249px;
+            height: 42px;
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat 0px -412px;
+            margin: 13px 0 0 0;
+        }
+
+        .login_button {
+            width: 91px;
+            height: 35px;
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat -500px -369px;
+            margin: 19px 0 0 0;
+            cursor: pointer;
+            border: 0;
+            outline: 0;
+        }
+
+        .username_div:hover {
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat -250px -369px;
+        }
+
+        .password_div:hover {
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat -250px -412px;
+        }
+
+        .login_button:hover {
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat -500px -405px;
+        }
+
+        .username_div_focus {
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat 0px -455px !important;
+        }
+
+        .password_div_focus {
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat -250px -455px !important;
+        }
+
+        .no_num {
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat 0px -498px;
+        }
+
+        .no_pas {
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat -249px -498px;
+        }
+
+        .pas_no {
+            background: url(http://xx.2x360.com/Login/1/default.png) no-repeat 0px -527px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <div class="login_main">
+            <span hidden></span>
+            <span class="alert" id="alert"></span>
+            <div class="username_div" id="username_div">
+                <input type="text" name="username" id="username" value="" />
+                <input type="hidden">
+            </div>
+            <div class="password_div" id="password_div">
+                <input type="password" name="password" id="password" value="" />
+            </div>
+            <input type="hidden" value="@ViewBag.UserID">
+            <input type="hidden" value="@ViewBag.MubanID">
+            <div class="button_div">
+                <button type="button" onclick="test()" class="login_button" id="login_button"></button>
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/20.js"></script>
+    <script type="text/javascript">
+        //私有区域
+        $("#username").on('focus', function () {
+            $("#username_div").addClass('username_div_focus');
+        });
+        $("#password").on('focus', function () {
+            $("#password_div").addClass('password_div_focus');
+        });
+        $("#username").on('blur', function () {
+            $("#username_div").removeClass('username_div_focus');
+        })
+        $("#password").on('blur', function () {
+            $("#password_div").removeClass('password_div_focus');
+        });
+        $('input').on('keyup', function () {
+            if ($(this).val() == '') {
+                $(this).css('background', '0');
+            } else {
+                $(this).css('background', '#fff');
+            }
+        });
+    </script>
+</body>
+</html>
