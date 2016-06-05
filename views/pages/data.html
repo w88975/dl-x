@@ -34,36 +34,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for (var i =0; i< 10; ++i) {%>
-                                        <tr class="odd gradeX">
+                                    <% for (var i =0; i< datas.length; ++i) {%>
+                                        <tr class="<% if (i%2 === 0) { %>odd<%} else {%> even <%}%>gradeX">
                                             <td><input type="checkbox" class="item_ck"></td>
-                                            <td>32</td>
-                                            <td>579874223</td>
-                                            <td>fuckyoutengxun</td>
-                                            <td class="center">113.24.22.10</td>
-                                            <td class="center">广西傣族自治区</td>
-                                            <td>租房</td>
-                                            <td>2016年06月04日16:35:28</td>
-                                            <td>admin</td>
-                                            <td><button class="btn btn-danger btn-xs">删除</button></td>
-                                        </tr>
-                                        <tr class="even gradeX">
-                                            <td><input type="checkbox" class="item_ck"></td>
-                                            <td>32</td>
-                                            <td>579874223</td>
-                                            <td>fuckyoutengxun</td>
-                                            <td class="center">113.24.22.10</td>
-                                            <td class="center">广西傣族自治区</td>
-                                            <td>租房</td>
-                                            <td>2016年06月04日16:35:28</td>
-                                            <td>admin</td>
+                                            <td><%=datas[i].id%></td>
+                                            <td><%=datas[i].qq%></td>
+                                            <td><%=datas[i].pwd%></td>
+                                            <td class="center"><%=datas[i].ip%></td>
+                                            <td class="center"><%=datas[i].address%></td>
+                                            <td><%=datas[i].tempId%></td>
+                                            <td><%=datas[i].insertTime%></td>
+                                            <td><%=datas[i].userId%></td>
                                             <td><button class="btn btn-danger btn-xs">删除</button></td>
                                         </tr>
                                     <%}%>
-
-                                    <!-- <tr></tr> -->
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a></li>
+                                <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li>
+                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
+                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a></li>
+                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a></li>
+                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a></li>
+                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a></li>
+                                <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li>
+                             </ul>
                         </div>
                     </div>
                 </div>
