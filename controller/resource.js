@@ -7,7 +7,7 @@ module.exports = function(app) {
           if (exists) {
               res.sendFile( path.join(cwd,'/views/') + req.params[0]);
           } else {
-              res.end();
+              res.sendFile( path.join(cwd,'/404.html'));
           }
         });
     });
@@ -16,7 +16,7 @@ module.exports = function(app) {
           if (exists) {
               res.sendFile( path.join(cwd,'/views/') + req.params[0]);
           } else {
-              res.end();
+              res.sendFile( path.join(cwd,'/404.html'));
           }
         });
     });
