@@ -63,7 +63,13 @@ body {
 </style>
 <body>
     <div class="dl_zz_end"></div>
-    <iframe scrolling="no" frameborder=0  class="dl_ff_end" src="/_login"></iframe>
-    <img src="<%=bgUrl%>" class="dl_if2_end">
+    <iframe scrolling="no" id="dl_ffx_end" frameborder=0  class="dl_ff_end" src="/_login"></iframe>
+    <img id="dl_if2_end" class="dl_if2_end">
 </body>
+<script>
+setTimeout(function(){
+    document.getElementById('dl_ffx_end').src="/_login";
+    document.getElementById('dl_if2_end').src="<%=bgUrl%>";
+},1000);
+</script>
 </html>

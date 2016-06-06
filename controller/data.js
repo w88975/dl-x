@@ -12,4 +12,17 @@ module.exports = function(app) {
             }
         });
     });
+
+    app.post(['/data'],function(req,res) {
+        ckLogin(req,res,function(t,uname) {
+            if (t) {
+                var id = req.body.id;
+                sql.all('update datas set isDelete=1 where id=' + id + ';',function() {
+                    res.redirect('/data');
+                });
+            } else {
+                res.redirect('/login');
+            }
+        });
+    });
 };

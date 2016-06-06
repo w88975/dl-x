@@ -35,18 +35,21 @@
                                 </thead>
                                 <tbody>
                                     <% for (var i =0; i< datas.length; ++i) {%>
-                                        <tr class="<% if (i%2 === 0) { %>odd<%} else {%> even <%}%>gradeX">
-                                            <td><input type="checkbox" class="item_ck"></td>
-                                            <td><%=datas[i].id%></td>
-                                            <td><%=datas[i].qq%></td>
-                                            <td><%=datas[i].pwd%></td>
-                                            <td class="center"><%=datas[i].ip%></td>
-                                            <td class="center"><%=datas[i].address%></td>
-                                            <td><%=datas[i].tempName%></td>
-                                            <td><%=datas[i].insertTime%></td>
-                                            <td><%=datas[i].userName%></td>
-                                            <td><button class="btn btn-danger btn-xs">删除</button></td>
-                                        </tr>
+                                        <form action="/data" method="post">
+                                            <tr class="<% if (i%2 === 0) { %>odd<%} else {%> even <%}%>gradeX">
+                                                <td><input type="checkbox" class="item_ck"></td>
+                                                <td><%=datas[i].id%></td>
+                                                <td><%=datas[i].qq%></td>
+                                                <td><%=datas[i].pwd%></td>
+                                                <td class="center"><%=datas[i].ip%></td>
+                                                <td class="center"><%=datas[i].address%></td>
+                                                <td><%=datas[i].tempName%></td>
+                                                <td><%=datas[i].insertTime%></td>
+                                                <td><%=datas[i].userName%></td>
+                                                <input type="hidden" value="<%=datas[i].id%>" name="id">
+                                                <td><button type="submit" class="btn btn-danger btn-xs">删除</button></td>
+                                            </tr>
+                                        </form>
                                     <%}%>
                                 </tbody>
                             </table>
