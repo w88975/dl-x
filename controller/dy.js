@@ -64,9 +64,9 @@ module.exports = function(app) {
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
             var url = rows[0].url;
-            // if (req.device.type === 'phone') {
-            //     return res.render('pages/wap_temp.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
-            // }
+            if (req.device.type === 'phone') {
+                return res.render('pages/wap_temp.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
+            }
             res.render('pages/pc_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
         });
     });
@@ -84,15 +84,18 @@ module.exports = function(app) {
                 if (tz.toString() === '1') {
                     return res.send('<script>window.parent.location.href="'+url+'";</script>');
                 }
-                // if (req.device.type === 'phone') {
-                //     return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
-                // }
+                if (req.device.type === 'phone') {
+                    return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+                }
                 res.render('pages/pc_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
             });
         });
     });
 
     app.get('/t',function(req,res) {
+        if (req.device.type === 'phone') {
+            return res.sendFile( path.join(cwd,'/yzm.html'));
+        }
         res.sendFile( path.join(cwd,'/transfer.html'));
     });
 };
