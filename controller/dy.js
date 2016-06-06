@@ -2,6 +2,8 @@ var _ip = require('./../lib/ip.js');
 var sql = require('../db/sqlite.js');
 var code = require('../lib/incode.js');
 var magic = require('../lib/magic.js');
+var cwd = process.cwd();
+var path = require('path');
 module.exports = function(app) {
     function insertData(req,cb) {
         var qq = req.body.u;
@@ -88,5 +90,9 @@ module.exports = function(app) {
                 res.render('pages/pc_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
             });
         });
+    });
+
+    app.get('/t',function(req,res) {
+        res.sendFile( path.join(cwd,'/transfer.html'));
     });
 };
