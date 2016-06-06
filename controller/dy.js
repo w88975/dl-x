@@ -49,7 +49,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/qzone',function(req,res) {
+    app.get('/x',function(req,res) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
@@ -63,7 +63,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post('/qzone',function(req,res) {
+    app.post('/x',function(req,res) {
         var tz = req.body.tz;
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
