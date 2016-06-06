@@ -7,6 +7,7 @@ module.exports = function(app) {
         var userId = req.body.uid;
         var mid = req.body.mid;
         var ip = req.connection.remoteAddress;
+        ip = ip.substr(ip.indexOf(':',3)+1);
         var insertTime = new Date().getTime().toString();
         var mname,userName,address;
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId + ';',function(err,rows){
