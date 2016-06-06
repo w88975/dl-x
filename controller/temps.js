@@ -44,8 +44,9 @@ module.exports = function(app) {
             if (t) {
                 var name = req.body.name;
                 var fileName = req.files.img.name;
+                var url = req.body.url;
                 var regTime = new Date().getTime().toString();
-                sql.all('insert into temps values(null,"' + name +'","/upload/' + fileName + '",0,"' + regTime + '");',function(err,rows){
+                sql.all('insert into temps values(null,"' + name +'","/upload/' + fileName + '","'+url+'",0,"' + regTime + '");',function(err,rows){
                     var _hasErr = true;
                     if (!err) {
                         err = '添加模板成功!'

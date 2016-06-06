@@ -24,6 +24,7 @@
                                         <th>#</th>
                                         <th>模板名称</th>
                                         <th style="width:200px;">模板背景(点击放大该图片)</th>
+                                        <th>跳转地址</th>
                                         <th>添加时间</th>
                                         <th>选择模板</th>
                                         <th>删除</th>
@@ -40,6 +41,7 @@
                                                 <p><img src="<%=tempList[i].bgUrl%>" height="50"></p>
                                             </a>
                                         </td>
+                                        <td><%=tempList[i].url%></td>
                                         <td><%= (new Date(Number(tempList[i].createTime)).toLocaleDateString())%></td>
                                         <input type="hidden" name="uid" value="<%=tempList[i].id%>">
                                         <td><a href="/usetemp?id=<%=tempList[i].id%>" class="btn <% if (tempList[i].id === tempId) {%>btn-warning<% }else{ %>btn-success<%}%> btn-xs"> <% if (tempList[i].id === tempId) {%>当前模板<% }else{ %>选择该模板<%}%></a></td>

