@@ -13,7 +13,7 @@ module.exports = function(app) {
             if (rows.length >0 ) {
                 res.clearCookie('oid');
                 res.cookie('oid', rows[0].id);
-                return res.redirect('/index');
+                return res.redirect('/admin');
             } else {
                 return res.render('pages/login.html',{layout: null,msg:'账号或密码错误!'});
             }
