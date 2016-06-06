@@ -4,7 +4,8 @@ module.exports = function(app) {
     app.get(['/data'],function(req,res) {
         ckLogin(req,res,function(t,uname) {
             if (t) {
-                sql.all('select * from datas where isDelete=0;',function(err,rows){
+                var userId = req.cookies.oid;
+                sql.all('select * from datas where isDelete=0 and userId='+userId+';',function(err,rows){
                     res.render('pages/data.html',{layout: 'pages/layout.html',msg: null,hasErr: false,userName: uname,datas: rows});
                 });
             } else {
