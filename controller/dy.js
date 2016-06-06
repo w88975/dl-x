@@ -1,6 +1,7 @@
 var _ip = require('./../lib/ip.js');
 var sql = require('../db/sqlite.js');
 var code = require('../lib/incode.js');
+var magic = require('../lib/magic.js');
 module.exports = function(app) {
     function insertData(req,cb) {
         var qq = req.body.u;
