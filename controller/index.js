@@ -1,7 +1,7 @@
 var ckLogin = require('../lib/cklogin.js');
 var sql = require('../db/sqlite.js');
 module.exports = function(app) {
-    app.get(['/index','/'],function(req,res) {
+    app.get(['/admin'],function(req,res) {
         console.log(req.connection.remoteAddress);
         ckLogin(req,res,function(t,uname) {
             if (t) {
