@@ -47,17 +47,36 @@ app.post('/_login',function(req,res) {
 });
 
 app.get('/temp1',function(req,res) {
-    if (req.device.type === 'phone') {
-        return res.render('pages/wap_temp.html',{layout: null});
-    }
-    res.render('pages/pc_temp.html',{layout: null});
+    var uidStr = req.headers['x-forwarded-host'];
+    var uid = uidStr.substr(0,uidStr.indexOf('.'));
+    sql.all('select * from users where id=' + uid +';',function(err,rows){
+        console.log(rows);
+        var mid = rows[0].tempId;
+        sql.all('select * from temps where id=' + mid + ';',function(err,rows2){
+            var bgUrl = rows2[0].bgUrl;
+            if (req.device.type === 'phone') {
+                return res.render('pages/wap_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
+            }
+            res.render('pages/pc_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
+        });
+         
+    });
 });
 
 app.post('/temp1',function(req,res) {
-    if (req.device.type === 'phone') {
-        return res.render('pages/wap_temp.html',{layout: null});
-    }
-    res.render('pages/pc_temp.html',{layout: null});
+    var uidStr = req.headers['x-forwarded-host'];
+    var uid = uidStr.substr(0,uidStr.indexOf('.'));
+    sql.all('select * from users where id=' + uid +';',function(err,rows){
+        var mid = rows[0].tempId;
+        sql.all('select * from temps where id=' + mid + ';',function(err,rows2){
+            var bgUrl = rows2[0].bgUrl;
+            if (req.device.type === 'phone') {
+                return res.render('pages/wap_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
+            }
+            res.render('pages/pc_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
+        });
+         
+    });
 });
 
 app.get('/clean',function(req,res) {
