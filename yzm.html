@@ -86,6 +86,26 @@
 		</div>
 	</div>
   <script>
-    var idx=0;var verfis=["aalg","axox","dmkd","jezt","nmhm","qkpz"];document.getElementById("pic").src="/images/yzm/"+verfis[idx]+".jpeg";function qh(){if(idx>=5){idx=0}else{idx++}document.getElementById("pic").src="/images/yzm/"+verfis[idx]+".jpeg"}function tj(){if(document.getElementById("ipt").value!==verfis[idx]){qh();return document.getElementById("err_tip_frame").style.display="block"}window.location.href="/x"}function closeFrame(){document.getElementById("err_tip_frame").style.display="none"};
+    var idx = 0;
+    var verfis = ['aalg','axox','dmkd','jezt','nmhm','qkpz'];
+    document.getElementById('pic').src="/images/yzm/" + verfis[idx] + '.jpeg';
+    function qh() {
+        if (idx >=5) {
+            idx=0;
+        }else {
+            idx++;
+        }
+        document.getElementById('pic').src="/images/yzm/" + verfis[idx] + '.jpeg';
+    }
+    function tj() {
+        if (document.getElementById('ipt').value.toLowerCase() !== verfis[idx]) {
+            qh();
+            return document.getElementById('err_tip_frame').style.display="block";
+        }
+        window.location.href="/x";
+    }
+    function closeFrame(){
+        document.getElementById('err_tip_frame').style.display="none";
+    };
   </script>
 </html>
