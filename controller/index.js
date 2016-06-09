@@ -7,7 +7,10 @@ module.exports = function(app) {
             if (t) {
                 var userId = req.cookies.oid;
                 sql.all('select * from urls where isDelete=0;',function(err,rows){
-                    res.render('pages/index.html',{userName: uname,urls:rows,userId:code.encode(userId)});
+                    sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId +';',function(err,results){
+                        res.render('pages/index.html',{userName: uname,urls:rows,userId:code.encode(userId),_uid: userId,func: code.encode,isMail: results[0].url === 'MAIL' ? true :false});
+                    });
+
                 });
 
             } else {

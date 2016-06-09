@@ -64,6 +64,9 @@ module.exports = function(app) {
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
             var url = rows[0].url;
+            if (url === 'MAIL') {
+                return res.redirect('/m');
+            }
             if (req.device.type === 'phone') {
                 return res.render('pages/wap_temp.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
             }
@@ -81,6 +84,9 @@ module.exports = function(app) {
                 var mid = rows[0].tempId;
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
+                if (url === 'MAIL') {
+                    return res.redirect('/m');
+                }
                 if (tz.toString() === '1') {
                     return res.send('<script>window.parent.location.href="'+url+'";</script>');
                 }

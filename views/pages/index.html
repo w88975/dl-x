@@ -5,9 +5,18 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                列表
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
         <% for (var i =0; i< urls.length; ++i){%>
-            <input type="text" value="http://<%=userId%>.<%=urls[i].domain%>/t">
+            <!-- <input type="text" class="form-control" value="http://<%=func(_uid)%>.<%=urls[i].domain%>/<% if (isMail===true) {%>m<%}else{%>t<%}%>"> -->
+            <input type="text" class="form-control" value="http://<%=func(_uid)%>.<%=urls[i].domain%>/t">
         <%}%>
-
+            </div>
+        </div>
     </div>
 </div>
