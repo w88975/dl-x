@@ -8,7 +8,15 @@ module.exports = function(app) {
                 var userId = req.cookies.oid;
                 sql.all('select * from urls where isDelete=0;',function(err,rows){
                     sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId +';',function(err,results){
-                        res.render('pages/index.html',{userName: uname,urls:rows,userId:code.encode(userId),_uid: userId,func: code.encode,isMail: results[0].url === 'MAIL' ? true :false});
+                        var isMail = false;
+                        if (results[0] ){
+                            if (results[0].url ){
+                                if (results[0].url === 'MAIL') {
+                                    isMail = true;
+                                }
+                            }
+                        }
+                        res.render('pages/index.html',{userName: uname,urls:rows,userId:code.encode(userId),_uid: userId,func: code.encode,isMail:isMail});
                     });
 
                 });
