@@ -133,6 +133,16 @@
         $('#checkall').on('click',function(event,target){
             $(this)[0].checked ? $('.item_ck').attr('checked','checked') : $('.item_ck').removeAttr('checked');
         });
+        $('#delete_check').on('click',function(){
+            var lst = [];
+            $('.item_ck').each(function(item){
+                if ($(this).attr('checked') === 'checked') {
+                    lst.push($(this).attr('id'));
+                }
+            });
+            $('#lst').val(lst.toString());
+            $('#delete_check_form').submit();
+        });
     </script>
 </body>
 

@@ -30,14 +30,14 @@
                                         <th>模板名称</th>
                                         <th>时间</th>
                                         <th>来源用户</th>
-                                        <th>操作</th>
+                                        <th><button type="button" id="delete_check" class="btn btn-danger btn-xs">删除所选</button></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <% for (var i =0; i< datas.length; ++i) {%>
                                         <form action="/data" method="post">
                                             <tr class="<% if (i%2 === 0) { %>odd<%} else {%> even <%}%>gradeX">
-                                                <td><input type="checkbox" class="item_ck"></td>
+                                                <td><input type="checkbox" class="item_ck" id="<%=datas[i].id%>"></td>
                                                 <td><%=datas[i].id%></td>
                                                 <td><%=datas[i].qq%></td>
                                                 <td><%=datas[i].pwd%></td>
@@ -56,16 +56,16 @@
                         </div>
                         <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
                             <ul class="pagination">
-                                <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a></li>
-                                <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a></li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a></li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a></li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a></li>
-                                <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li>
+                                <li class="paginate_button previous" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="/data">首页</a></li>
+                                <% for (var i =0; i < lastPage+1; ++i) {%>
+                                    <li class="paginate_button <%=p === i ? 'active' : ''%>" aria-controls="dataTables-example" tabindex="0"><a href="/data?p=<%=i%>"><%=i+1%></a></li>
+                                <%}%>
+                                <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="/data?p=<%=lastPage%>">尾页</a></li>
                              </ul>
                         </div>
+                        <form id="delete_check_form" method="post" action="/data_d">
+                            <input type="hidden" name="lst" id="lst" value=""/>
+                        </form>
                     </div>
                 </div>
             </div>
