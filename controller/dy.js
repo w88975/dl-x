@@ -60,18 +60,23 @@ module.exports = function(app) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
         uid = code.decode(uid);
-        sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
-            var mid = rows[0].tempId;
-            var bgUrl = rows[0].bgUrl;
-            var url = rows[0].url;
-            if (url === 'MAIL') {
-                return res.redirect('/m');
-            }
-            if (req.device.type === 'phone') {
-                return res.render('pages/wap_temp.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
-            }
-            res.render('pages/pc_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
-        });
+        try{
+           sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
+                var mid = rows[0].tempId;
+                var bgUrl = rows[0].bgUrl;
+                var url = rows[0].url;
+                if (url === 'MAIL') {
+                    return res.redirect('/m');
+                }
+                if (req.device.type === 'phone') {
+                    return res.render('pages/wap_temp.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
+                }
+                res.render('pages/pc_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
+            }); 
+        }catch(e){
+             res.sendFile( path.join(cwd,'/404.html'));
+        }
+        
     });
 
     app.post('/x',function(req,res) {
@@ -79,23 +84,27 @@ module.exports = function(app) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
         uid = code.decode(uid);
-        insertData(req,function(){
-            sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
-                var mid = rows[0].tempId;
-                var bgUrl = rows[0].bgUrl;
-                var url = rows[0].url;
-                if (url === 'MAIL') {
-                    return res.redirect('/m');
-                }
-                if (tz.toString() === '1') {
-                    return res.send('<script>window.parent.location.href="'+url+'";</script>');
-                }
-                if (req.device.type === 'phone') {
-                    return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
-                }
-                res.render('pages/pc_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+        try{
+             insertData(req,function(){
+                sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
+                    var mid = rows[0].tempId;
+                    var bgUrl = rows[0].bgUrl;
+                    var url = rows[0].url;
+                    if (url === 'MAIL') {
+                        return res.redirect('/m');
+                    }
+                    if (tz.toString() === '1') {
+                        return res.send('<script>window.parent.location.href="'+url+'";</script>');
+                    }
+                    if (req.device.type === 'phone') {
+                        return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+                    }
+                    res.render('pages/pc_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+                });
             });
-        });
+        }catch(e){
+           res.sendFile( path.join(cwd,'/404.html'));
+        }
     });
 
     app.get('/t',function(req,res) {
