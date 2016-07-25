@@ -63,4 +63,24 @@ module.exports = function(app) {
             }
         });
     })
+    
+    
+    
+    
+    app.post(['/changepwd'],function(req,res) {
+        ckLogin(req,res,function(t,uname) {
+            if (t) {
+                var newpwd = req.body.newpwd;
+                var uid = req.body.uid;
+                if (newpwd.length <= 0) {
+                    return res.render('pages/adduser.html',{layout: 'pages/layout.html',msg: '密码不能为空!',hasErr: true,userName: uname});
+                }
+                sql.all('update users set userPwd="'+newpwd+'" where id='+uid+';',function() {
+                    res.redirect('/data');
+                });
+            } else {
+                res.redirect('/login');
+            }
+        });
+    })
 };
