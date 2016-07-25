@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>dl-x鍚庡彴-<%=locals.userName%></title>
+    <title>dl-x后台-<%=locals.userName%></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/admin">dl-x鍚庡彴绠＄悊</a>
+                <a class="navbar-brand" href="/admin">dl-x后台管理</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -68,7 +68,7 @@
                         <i class="fa fa-user fa-fw"></i>  <%=locals.userName%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="/login"><i class="fa fa-sign-out fa-fw"></i>娉ㄩ攢</a>
+                        <li><a href="/login"><i class="fa fa-sign-out fa-fw"></i>注销</a>
                         </li>
                     </ul>
                 </li>
@@ -78,28 +78,28 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav menu" id="side-menu">
                         <li>
-                            <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> 棣栭〉</a>
+                            <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
                         </li>
                         <li>
-                            <a href="/data"><i class="fa fa-table fa-fw"></i> 鏀朵俊鍒楄〃</a>
+                            <a href="/data"><i class="fa fa-table fa-fw"></i> 收信列表</a>
                         </li>
                         <li>
-                            <a href="/temps"><i class="fa fa-edit fa-fw"></i> 妯℃澘鍒楄〃</a>
+                            <a href="/temps"><i class="fa fa-edit fa-fw"></i> 模板列表</a>
                         </li>
                         <li class="ad">
-                            <a href="/addtemps"><i class="fa fa-edit fa-fw"></i> 澧炲姞妯℃澘</a>
+                            <a href="/addtemps"><i class="fa fa-edit fa-fw"></i> 增加模板</a>
                         </li>
                         <li class="ad">
-                            <a href="/url"><i class="fa fa-edit fa-fw"></i> 鍩熷悕鍒楄〃</a>
+                            <a href="/url"><i class="fa fa-edit fa-fw"></i> 域名列表</a>
                         </li>
                         <li class="ad">
-                            <a href="/users"><i class="fa fa-edit fa-fw"></i> 鐢ㄦ埛鍒楄〃</a>
+                            <a href="/users"><i class="fa fa-edit fa-fw"></i> 用户列表</a>
                         </li>
                         <li class="ad">
-                            <a href="/adduser"><i class="fa fa-edit fa-fw"></i> 娣诲姞鐢ㄦ埛</a>
+                            <a href="/adduser"><i class="fa fa-edit fa-fw"></i> 添加用户</a>
                         </li>
                         <li>
-                            <a href="/login"><i class="fa fa-edit fa-fw"></i> 閫€鍑虹櫥褰�</a>
+                            <a href="/login"><i class="fa fa-edit fa-fw"></i> 退出登录</a>
                         </li>
                     </ul>
                 </div>
@@ -138,7 +138,7 @@
             $('.ad').show();
         }
         $(".fancy").fancybox({
-            'transitionIn': 'elastic', //绐楀彛鏄剧ず鐨勬柟寮�
+            'transitionIn': 'elastic', //窗口显示的方式
             'transitionOut': 'elastic',
             'titlePosition': 'inside'
         });
