@@ -11,6 +11,16 @@ module.exports = function(app) {
             }
         });
     });
+    
+    app.get(['/changepwd'],function(req,res) {
+        ckLogin(req,res,function(t,uname) {
+            if (t) {
+                res.render('pages/changepwd.html',{layout: 'pages/layout.html',msg: null,hasErr: false,userName: uname});
+            } else {
+                res.redirect('/login');
+            }
+        });
+    });
     app.post(['/adduser'],function(req,res) {
         ckLogin(req,res,function(t,uname) {
             if (t) {
