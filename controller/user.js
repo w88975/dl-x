@@ -71,7 +71,7 @@ module.exports = function(app) {
         ckLogin(req,res,function(t,uname) {
             if (t) {
                 var newpwd = req.body.newpwd;
-                var uid = req.body.uid;
+                var uid = req.cookies.oid;
                 if (newpwd.length <= 0) {
                     return res.render('pages/adduser.html',{layout: 'pages/layout.html',msg: '密码不能为空!',hasErr: true,userName: uname});
                 }
