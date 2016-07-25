@@ -76,7 +76,7 @@ module.exports = function(app) {
                     return res.render('pages/adduser.html',{layout: 'pages/layout.html',msg: '密码不能为空!',hasErr: true,userName: uname});
                 }
                 sql.all('update users set userPwd="'+newpwd+'" where id='+uid+';',function() {
-                    res.redirect('/data');
+                    res.redirect('/changepwd');
                 });
             } else {
                 res.redirect('/login');
