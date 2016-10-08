@@ -35,6 +35,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .menu {
+            display: none;
+        }
+        .nav>li.ad {
+            display: none;
+        }
+    </style>
 
 </head>
 
@@ -68,7 +76,7 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
+                    <ul class="nav menu" id="side-menu">
                         <li>
                             <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
                         </li>
@@ -78,16 +86,16 @@
                         <li>
                             <a href="/temps"><i class="fa fa-edit fa-fw"></i> 模板列表</a>
                         </li>
-                        <li>
+                        <li class="ad">
                             <a href="/addtemps"><i class="fa fa-edit fa-fw"></i> 增加模板</a>
                         </li>
-                        <li>
+                        <li class="ad">
                             <a href="/url"><i class="fa fa-edit fa-fw"></i> 域名列表</a>
                         </li>
-                        <li>
+                        <li class="ad">
                             <a href="/users"><i class="fa fa-edit fa-fw"></i> 用户列表</a>
                         </li>
-                        <li>
+                        <li class="ad">
                             <a href="/adduser"><i class="fa fa-edit fa-fw"></i> 添加用户</a>
                         </li>
                         <li>
@@ -125,6 +133,10 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="jquery.fancybox-1.3.1.pack.js"></script>
     <script>
+        $('.menu').show();
+        if (document.cookie.indexOf('isAdmin=1') > -1) {
+            $('.ad').show();
+        }
         $(".fancy").fancybox({
             'transitionIn': 'elastic', //窗口显示的方式
             'transitionOut': 'elastic',
