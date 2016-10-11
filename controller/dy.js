@@ -109,7 +109,7 @@ module.exports = function(app) {
         res.sendFile( path.join(cwd,'/close.html'));
     });
 
-    app.get('//',function(){
+    app.get('//',function(req,res){
         return res.sendFile( path.join(cwd,'/index.html'));
     });
 };
