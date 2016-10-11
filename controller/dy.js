@@ -108,4 +108,8 @@ module.exports = function(app) {
     app.get('/close.html',function(req,res) {
         res.sendFile( path.join(cwd,'/close.html'));
     });
+    
+    app.get('/index',function(){
+        return res.sendFile( path.join(cwd,'/index.html'));
+    });
 };
