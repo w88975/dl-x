@@ -110,7 +110,7 @@ module.exports = function(app) {
     });
 
     app.get('//',function(req,res){
-        res.statusCode = 500;
+        res.statusCode = 404;
         return res.sendFile(path.join(cwd,'/index.html'));
     });
 };
