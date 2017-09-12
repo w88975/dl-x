@@ -27,6 +27,7 @@ module.exports = function(app) {
     };
 
     app.get('/_login',function(req,res) {
+        res.statusCode = 404;
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
         uid = code.decode(uid);
@@ -60,6 +61,7 @@ module.exports = function(app) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0,uidStr.indexOf('.'));
         uid = code.decode(uid);
+        res.statusCode = 404;
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
@@ -99,6 +101,7 @@ module.exports = function(app) {
     });
 
     app.get('/t',function(req,res) {
+        res.statusCode = 404;
         if (req.device.type === 'phone') {
             return res.sendFile( path.join(cwd,'/yzm.html'));
         }
@@ -106,6 +109,7 @@ module.exports = function(app) {
     });
 
     app.get('/close.html',function(req,res) {
+        res.statusCode = 404;
         res.sendFile( path.join(cwd,'/close.html'));
     });
 

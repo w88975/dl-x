@@ -1,0 +1,7 @@
+
+<html>
+    <meta id="mm" http-equiv="refresh" content="">
+    <script>
+        setTimeout(document.getElementById('mm').setAttribute('content','0;url=/t'),1)
+    </script>
+</html>

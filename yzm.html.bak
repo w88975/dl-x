@@ -1,0 +1,114 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title class="xpxpk">*u8bf7*u8f93*u5165*u9a8c*u8bc1*u7801</title>
+  <style>
+    body {
+      background: rgb(239, 239, 245);
+      font-size: 16px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ipt {
+      display: inline;
+      box-sizing: border-box;
+      padding-right: 25px;
+      width: 100%;
+      height: 42px;
+      border: none;
+      font-weight: bold;
+      font-size: 1.06em;
+      padding: 0px 20px;
+    }
+
+    .aa {
+      display: block;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 6px;
+      font-size: 1.06em;
+      color: #fff;
+      text-decoration: none;
+      background-color: #0079FF;
+      text-align: center;
+      margin: 10px 10px;
+    }
+
+    a {
+      color: #1284D9;
+    }
+
+    .popup_box {
+      display: none;
+      z-index: 1000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      background: rgba(0, 0, 0, .3);
+    }
+
+    .popup {
+      position: relative;
+      top: 50%;
+      margin: -50px 25px 0;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+
+    .popup .tip {
+      padding: 17px 0;
+      color: #000;
+      text-align: center;
+    }
+
+    .popup .confirm a {
+      display: block;
+      border-top: 1px solid #B2B2B2;
+      padding: 12px 0;
+      text-align: center;
+      text-decoration: none;
+      color: #157EFB;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+  <script src="http://cdn.bootcss.com/jquery/3.0.0-rc1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <p style="font-size: .87em;padding: 0px 10px;padding-top: 14px;" class="xpxpk">*u5f53*u524d*u7f51*u7edc*u5b58*u5728*u5f02*u5e38,*u8bf7*u5b8c*u6210*u9a8c*u8bc1*uff1a</p>
+  <div style="width:100%;padding: 0px 10px;box-sizing: border-box;float: left;"><img id="pic" src="" style="width: 130px;height: 53px;display:inline-block;float:left;"><a style="line-height: 50px;display:inline-block;float:left;font-size: .9rem;color:#1284D9;margin-left:15px;"
+      onclick="qh()" class="xpxpk">\u6362\u4e00\u5f20</a></div>
+  <div style="width: 100%;box-sizing:border-box;height: 45px;float: left;border-top: 1px solid #AFB0B2;border-bottom: 1px solid #AFB0B2;background-color: #fff;font-size: 14px;margin-top: 20px;"><input type="text" id="ipt" class="ipt xpxpk" value="" placeholder="请输入验证码"></div>
+  <div style="width:100%;float:left;"><a class="aa xpxpk" onclick="tj()">*u63d0*u4ea4</a></div>
+  <p style="padding: 0px 10px;"><a style="float:left;font-size: .1rem;" class="xpxpk">*u4e3a*u4ec0*u4e48*u8981*u8fdb*u884c*u5b89*u5168*u9a8c*u8bc1</a>
+    <a
+      style="float:right;font-size: .1rem;" class="xpxpk">*u6211*u8981*u53cd*u9988</a>
+  </p>
+</body>
+<div class="popup_box" id="err_tip_frame">
+  <div class="popup">
+    <div class="tip xpxpk" id="err_tip_text">&#x9A8C;&#x8BC1;&#x5931;&#x8D25;&#xFF0C;&#x8BF7;&#x91CD;&#x8BD5;&#x3002;</div>
+    <div class="confirm xpxpk"><a onclick="closeFrame()">&#x786E;&#x8BA4;</a>
+    </div>
+  </div>
+</div>
+<script>
+  eval(function (p, a, c, k, e, d) { e = function (c) { return (c < a ? "" : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)) }; if (!''.replace(/^/, String)) { while (c--) d[e(c)] = k[c] || e(c); k = [function (e) { return d[e] }]; e = function () { return '\\w+' }; c = 1; }; while (c--) if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); return p; }('h 1=0;h 4=[\'o\',\'p\',\'k\',\'j\',\'m\',\'l\'];3.2(\'8\').c="/a/d/"+4[1]+\'.b\';6 7(){9(1>=5){1=0}n{1++}3.2(\'8\').c="/a/d/"+4[1]+\'.b\'}6 w(){9(3.2(\'y\').A.z()!==4[1]){7();s 3.2(\'e\').f.g="r"}q.v.u="/x"}6 t(){3.2(\'e\').f.g="i"};', 37, 37, '|idx|getElementById|document|verfis||function|qh|pic|if|images|jpeg|src|yzm|err_tip_frame|style|display|var|none|jezt|dmkd|qkpz|nmhm|else|aalg|axox|window|block|return|closeFrame|href|location|tj||ipt|toLowerCase|value'.split('|'), 0, {}))
+</script>
+<script>
+  $('.xpxpk').each(function () {
+    var _x = $(this).html();
+    _x = _x.replace(/\*/g, '\\');
+    $(this).html(eval('"' + _x + '"'));
+  });
+</script>
+
+</html>
