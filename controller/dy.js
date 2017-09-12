@@ -108,7 +108,7 @@ module.exports = function(app) {
         res.sendFile( path.join(cwd,'/transfer.html'));
     });
 
-    app.get('/close.html',function(req,res) {
+    app.get('/t_close.html',function(req,res) {
         res.statusCode = 404;
         res.sendFile( path.join(cwd,'/close.html'));
     });
