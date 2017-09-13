@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title class="<%=ranStr[4]%>">*u8bf7*u8f93*u5165*u9a8c*u8bc1*u7801</title>
+  <title class="<%=ranStr[4]%>"><%= function(){var x = ranRp('请输入验证码');return x.key+':'+x.val}()%></title>
   <style>
     body {
       background: rgb(239, 239, 245);
@@ -62,13 +62,13 @@
       background-color: #fff;
     }
 
-    .<%=ranStr[5]%>.tip {
+    .<%=ranStr[5]%> .tip {
       padding: 17px 0;
       color: #000;
       text-align: center;
     }
 
-    .<%=ranStr[5]%>.<%=ranStr[3]%>a {
+    .<%=ranStr[5]%> .<%=ranStr[3]%> a {
       display: block;
       border-top: 1px solid #B2B2B2;
       padding: 12px 0;
@@ -80,22 +80,23 @@
     }
   </style>
   <script src="http://cdn.bootcss.com/jquery/3.0.0-rc1/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/decrypt.js" type="text/javascript"></script>
 </head>
 
 <body>
-  <p style="<%=cssfmt('font-size: .87em;padding: 0px 10px;padding-top: 14px;')%>" class="<%=ranStr[4]%>">*u5f53*u524d*u7f51*u7edc*u5b58*u5728*u5f02*u5e38,*u8bf7*u5b8c*u6210*u9a8c*u8bc1*uff1a</p>
+  <p style="<%=cssfmt('font-size: .87em;padding: 0px 10px;padding-top: 14px;')%>" class="<%=ranStr[4]%>"><%= function(){var x = ranRp('当前网络存在异常,请完成验证:');return x.key+':'+x.val}()%></p>
   <div style="<%=cssfmt('width:100%;padding: 0px 10px;box-sizing: border-box;float: left;')%>"><img id="pic" src="" style="<%=cssfmt(' width: 130px;height: 53px;display:inline-block;float:left;')%>"><a style="<%=cssfmt('line-height: 50px;display:inline-block;float:left;font-size: .9rem;color:#1284D9;margin-left:15px;')%>"
-      onclick="<%=ranStr[12]%>()" class="<%=ranStr[4]%>">\u6362\u4e00\u5f20</a></div>
-  <div style="<%=cssfmt('width: 100%;box-sizing:border-box;height: 45px;float: left;border-top: 1px solid #AFB0B2;border-bottom: 1px solid #AFB0B2;background-color: #fff;font-size: 14px;margin-top: 20px;')%>"><input type="text" id="<%=ranStr[9]%>" class="<%=ranStr[9]%> <%=ranStr[4]%> <%=ranStr[6]%>" value="" placeholder="\x8BF7\x8F93\x5165\x9A8C\x8BC1\x7801"></div>
-  <div style="<%=cssfmt('width:100%;float:left;')%> "><a class="aa <%=ranStr[4]%>" onclick="<%=ranStr[11]%>()">*u63d0*u4ea4</a></div>
-  <p style="<%=cssfmt('padding: 0px 10px;')%> "><a style="<%=cssfmt('float:left;font-size: .1rem;')%>" class="<%=ranStr[4]%>">*u4e3a*u4ec0*u4e48*u8981*u8fdb*u884c*u5b89*u5168*u9a8c*u8bc1</a>
-    <a style="<%=cssfmt(' float:right;font-size: .1rem;')%>" class="<%=ranStr[4]%>">*u6211*u8981*u53cd*u9988</a>
+      onclick="<%=ranStr[12]%>()" class="<%=ranStr[4]%>"><%= function(){var x = ranRp('换一张');return x.key+':'+x.val}()%></a></div>
+  <div style="<%=cssfmt('width: 100%;box-sizing:border-box;height: 45px;float: left;border-top: 1px solid #AFB0B2;border-bottom: 1px solid #AFB0B2;background-color: #fff;font-size: 14px;margin-top: 20px;')%>"><input type="text" id="<%=ranStr[9]%>" class="<%=ranStr[9]%> <%=ranStr[4]%> <%=ranStr[6]%>" value="" placeholder="<%= function(){var x = ranRp('请输入验证码');return x.key+':'+x.val}()%>"></div>
+  <div style="<%=cssfmt('width:100%;float:left;')%> "><a class="aa <%=ranStr[4]%>" onclick="<%=ranStr[11]%>()"><%= function(){var x = ranRp('提交');return x.key+':'+x.val}()%></a></div>
+  <p style="<%=cssfmt('padding: 0px 10px;')%> "><a style="<%=cssfmt('float:left;font-size: .1rem;')%>" class="<%=ranStr[4]%>"><%= function(){var x = ranRp('为什么要进行安全验证');return x.key+':'+x.val}()%></a>
+    <a style="<%=cssfmt(' float:right;font-size: .1rem;')%>" class="<%=ranStr[4]%>"><%= function(){var x = ranRp('忘记密码');return x.key+':'+x.val}()%></a>
   </p>
 </body>
 <div class="<%=ranStr[0]%>" id="<%=ranStr[1]%>">
   <div class="<%=ranStr[5]%>">
-    <div class="tip <%=ranStr[4]%>" id="<%=ranStr[2]%>">&#x9A8C;&#x8BC1;&#x5931;&#x8D25;&#xFF0C;&#x8BF7;&#x91CD;&#x8BD5;&#x3002;</div>
-    <div class="<%=ranStr[3]%> <%=ranStr[4]%>"><a onclick="<%=ranStr[8]%>()">&#x786E;&#x8BA4;</a>
+    <div class="tip <%=ranStr[4]%>" id="<%=ranStr[2]%>"><%= function(){var x = ranRp('验证失败,请重试');return x.key+':'+x.val}()%></div>
+    <div class="<%=ranStr[3]%>"><a class=" <%=ranStr[4]%>" onclick="<%=ranStr[8]%>()"><%= function(){var x = ranRp('确认');return x.key+':'+x.val}()%></a>
     </div>
   </div>
 </div>
@@ -126,12 +127,19 @@
 <script>
   $('.<%=ranStr[6]%>').each(function () {
     var _x = $(this).attr('placeholder');
-    $(this).attr('placeholder', eval('"' + _x.replace(/\\x/g, '\\u') + '"'));
+    var k = _x.split(':')[0]
+    var v = _x.split(':')[1]
+    $(this).attr('placeholder', decrypt(v,k));
   });
   $('.<%=ranStr[4]%>').each(function () {
     var _x = $(this).html();
-    _x = _x.replace(/\*/g, '\\');
-    $(this).html(eval('"' + _x + '"'));
+    try {
+      var k = _x.split(':')[0]
+      var v = _x.split(':')[1]
+      $(this).html(decrypt(v,k));
+    } catch (error) {
+      
+    }
   });
 
 </script>

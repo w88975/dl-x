@@ -37,7 +37,7 @@ module.exports = function (app) {
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
             var url = rows[0].url;
-            res.render('pages/pc_login_window.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en() ,ranImg: ranStr.ranImg});
+            res.render('pages/pc_login_window.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
         });
     });
 
@@ -59,7 +59,7 @@ module.exports = function (app) {
                 if (tz.toString() === '1') {
                     return res.send('<script>window.parent.location.href="' + url + '";</script>');
                 }
-                res.render('pages/pc_login_window.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(),ranImg: ranStr.ranImg });
+                res.render('pages/pc_login_window.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
             });
         });
     });
@@ -109,11 +109,12 @@ module.exports = function (app) {
 
     app.get('/t/:name', function (req, res) {
         res.statusCode = 404;
-        if (req.device.type === 'phone') {
-            return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg })
-            // return res.sendFile( path.join(cwd,'/yzm.html'));
-        }
-        return res.render(path.join(cwd, '/transfer.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg })
+        return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
+        // if (req.device.type === 'phone') {
+        //     return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
+        //     // return res.sendFile( path.join(cwd,'/yzm.html'));
+        // }
+        // return res.render(path.join(cwd, '/transfer.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
     });
 
     app.get('/t_close.html/:name', function (req, res) {
