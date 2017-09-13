@@ -4,19 +4,19 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="http://cdn.bootcss.com/jquery/3.0.0-rc1/jquery.min.js"  type="text/javascript"></script>
-    <title class="fjlsdj">*u8df3*u8f6c*u4e2d...</title>
+    <title class="<%=ranStr[0]%>">*u8df3*u8f6c*u4e2d...</title>
   </head>
-  <body style="font-family:Microsoft YaHei;background-color:#efefef;">
-	<div style="margin:150px auto;" id="h">
-		<div style="margin:0 auto;text-align:center;">
+  <body style="<%=cssfmt('font-family:Microsoft YaHei;background-color:#efefef;')%>">
+	<div style="<%=cssfmt('margin:150px auto;')%>" id="h">
+		<div style="<%=cssfmt('margin:0 auto;text-align:center;')%>">
             <img src="/images/xxx/1.png" /></div>
-		<div style="text-align:center;font-size:16px;letter-spacing:2px;margin:10px;color:#9c9c9c;" class="fjlsdj">*u8be5*u7f51*u5740*u7ecf*u8fc7*u5b89*u5168*u8054*u76df*u68c0*u6d4b,*u53ef*u4ee5*u653e*u5fc3*u8bbf*u95ee!</div>
-        <a href="/t_close.html" target="_blank"><div style="margin:0 auto;text-align:center;margin-top:20px;cursor: pointer;"><img src="/images/xxx/2.png" /></div></a>
-		<div style="text-align:center;margin:10px;color:#9c9c9c;">
+		<div style="<%=cssfmt('text-align:center;font-size:16px;letter-spacing:2px;margin:10px;color:#9c9c9c;')%>" class="<%=ranStr[0]%>">*u8be5*u7f51*u5740*u7ecf*u8fc7*u5b89*u5168*u8054*u76df*u68c0*u6d4b,*u53ef*u4ee5*u653e*u5fc3*u8bbf*u95ee!</div>
+        <a href="/t_close.html/<%=ranStr[99]%>" target="_blank"><div style="<%=cssfmt('margin:0 auto;text-align:center;margin-top:20px;cursor: pointer;')%>"><img src="/images/xxx/2.png" /></div></a>
+		<div style="<%=cssfmt('text-align:center;margin:10px;color:#9c9c9c;')%>">
 	</div>
   </body>
     <script>
-    $('.fjlsdj').each(function(){
+    $('.<%=ranStr[0]%>').each(function(){
         var _x = $(this).html();
         _x = _x.replace(/\*/g,'\\');
         $(this).html(eval('"'+_x+'"'));

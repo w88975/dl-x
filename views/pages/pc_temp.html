@@ -11,34 +11,14 @@ body {
     overflow: hidden;
 }
 
-.yhnfdsk {
-    position: absolute;
-    width: 250px;
-    color: #666666;
-    font-size: 14px;
-    left: 90px;
-    top: 110px;
-    line-height: 20px;
-}
-
-.ruieru {
-    position: absolute;
-    width: 250px;
-    color: #666666;
-    font-size: 14px;
-    left: 90px;
-    top: 159px;
-    line-height: 20px;
-}
-
-.opoperjlk {
+.<%=ranStr[3]%> {
     width: 100%;
     /*height: 1001px;*/
     display: inline-block;
     padding: 0px;
 }
 
-.fjdslfx {
+.<%=ranStr[0]%> {
     position: absolute;
     width: 100%;
     height: 1001px;
@@ -49,7 +29,7 @@ body {
     opacity: 0.5;
 }
 
-.dfjlds {
+.<%=ranStr[2]%> {
     position: absolute;
     width: 622px;
     height: 368px;
@@ -62,14 +42,14 @@ body {
 }
 </style>
 <body>
-    <div class="fjdslfx"></div>
-    <iframe scrolling="no" id="fdfgxq" frameborder=0  class="dfjlds"></iframe>
-    <img id="opoperjlk" class="opoperjlk">
+    <div class="<%=ranStr[0]%>"></div>
+    <iframe scrolling="no" id="<%=ranStr[1]%>" frameborder=0  class="<%=ranStr[2]%>"></iframe>
+    <img id="<%=ranStr[3]%>" class="<%=ranStr[3]%>">
 </body>
 <script>
 setTimeout(function(){
-    document.getElementById('fdfgxq').src="/_login";
-    document.getElementById('opoperjlk').src="<%=bgUrl%>";
+    document.getElementById('<%=ranStr[1]%>').src="/_login/<%=ranStr[99]%>";
+    document.getElementById('<%=ranStr[3]%>').src="<%=bgUrl%>";
 },500);
 </script>
 </html>
