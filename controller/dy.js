@@ -124,6 +124,6 @@ module.exports = function (app) {
 
     app.get('//', function (req, res) {
         res.statusCode = 404;
-        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg })
+        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg,ran: ranStr })
     });
 };
