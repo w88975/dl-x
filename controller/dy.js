@@ -76,10 +76,11 @@ module.exports = function (app) {
             if (url === 'MAIL') {
                 return res.redirect('/m');
             }
-            if (req.device.type === 'phone') {
-                return res.render('pages/wap_temp.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
-            }
-            res.render('pages/pc_temp.html', { layout: null, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
+            // if (req.device.type === 'phone') {
+            //     return res.render('pages/wap_temp.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
+            // }
+            return res.render('pages/wap_temp.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
+            // res.render('pages/pc_temp.html', { layout: null, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
         });
     });
 
@@ -99,10 +100,11 @@ module.exports = function (app) {
                 if (tz.toString() === '1') {
                     return res.send('<script>window.parent.location.href="' + url + '";</script>');
                 }
-                if (req.device.type === 'phone') {
-                    return res.render('pages/wap_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
-                }
-                res.render('pages/pc_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
+                // if (req.device.type === 'phone') {
+                //     return res.render('pages/wap_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
+                // }
+                return res.render('pages/wap_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
+                // res.render('pages/pc_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
             });
         });
     });
