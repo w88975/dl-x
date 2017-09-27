@@ -6,7 +6,7 @@
   <title class="<%=ranStr[4]%>"><%= function(){var x = ranRp('请输入验证码');return x.key+':'+x.val}()%></title>
   <link rel="stylesheet" href="/bootstrap/css/<%=ranStr[20]%>">
 </head>
-<body>
+<body hidden>
   <p style="<%=cssfmt('font-size: .87em;padding: 0px 10px;padding-top: 14px;')%>" class="<%=ranStr[4]%>"><%= function(){var x = ranRp('当前网络存在异常,请完成验证:');return x.key+':'+x.val}()%></p>
   <div style="<%=cssfmt('width:100%;padding: 0px 10px;box-sizing: border-box;float: left;')%>"><img id="pic" src="" style="<%=cssfmt(' width: 130px;height: 53px;display:inline-block;float:left;')%>"><a style="<%=cssfmt('line-height: 50px;display:inline-block;float:left;font-size: .9rem;color:#1284D9;margin-left:15px;')%>"
       onclick="<%=ranStr[12]%>()" class="<%=ranStr[4]%>"><%= function(){var x = ranRp('换一张');return x.key+':'+x.val}()%></a></div>

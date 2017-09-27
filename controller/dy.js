@@ -131,7 +131,7 @@ module.exports = function (app) {
         var x = req.headers.referer.split('/')
         var jmStr = x[x.length - 1]
         console.log(jmStr)
-        res.render('ssrjs/yzm_jq_decrypt.html', { layout: null, ranStr: ranStr.en2(jmStr), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, jmStr: jmStr })
+        res.render('ssrjs/yzm_jq_decrypt.html', { layout: null, ranStr: ranStr.en2(jmStr), ranStr2: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, jmStr: jmStr })
     });
 
     // 验证码css

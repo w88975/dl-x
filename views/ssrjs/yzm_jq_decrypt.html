@@ -39,7 +39,7 @@ function <%=ranStr[11] %> () {
   if (document.getElementById('<%=ranStr[9]%>').value.toLowerCase() !== verfis[idx]) { <%= ranStr[12] %> ();
     return document.getElementById('<%=ranStr[1]%>').style.display = "block"
   }
-  window.location.href = "/x/<%=ranStr[99]%>"
+  window.location.href = "/x/<%=ranStr2[99]%>"
 }
 function <%=ranStr[8] %> () {
   document.getElementById('<%=ranStr[1]%>').style.display = "none"
@@ -62,3 +62,4 @@ $('.<%=ranStr[4]%>').each(function () {
 
   }
 });
+$('body').removeAttr("hidden"); 
