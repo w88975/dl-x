@@ -2,87 +2,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title class="<%=ranStr[4]%>"><%= function(){var x = ranRp('请输入验证码');return x.key+':'+x.val}()%></title>
-  <style>
-    body {
-      background: rgb(239, 239, 245);
-      font-size: 16px;
-      padding: 0;
-      margin: 0;
-    }
-
-    .<%=ranStr[9]%> {
-      display: inline;
-      box-sizing: border-box;
-      padding-right: 25px;
-      width: 100%;
-      height: 42px;
-      border: none;
-      font-weight: bold;
-      font-size: 1.06em;
-      padding: 0px 20px;
-    }
-
-    .aa {
-      display: block;
-      height: 44px;
-      line-height: 44px;
-      border-radius: 6px;
-      font-size: 1.06em;
-      color: #fff;
-      text-decoration: none;
-      background-color: #0079FF;
-      text-align: center;
-      margin: 10px 10px;
-    }
-
-    a {
-      color: #1284D9;
-    }
-
-    .<%=ranStr[0]%> {
-      display: none;
-      z-index: 1000;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      font-size: 16px;
-      background: rgba(0, 0, 0, .3);
-    }
-
-    .<%=ranStr[5]%> {
-      position: relative;
-      top: 50%;
-      margin: -50px 25px 0;
-      border-radius: 4px;
-      background-color: #fff;
-    }
-
-    .<%=ranStr[5]%> .tip {
-      padding: 17px 0;
-      color: #000;
-      text-align: center;
-    }
-
-    .<%=ranStr[5]%> .<%=ranStr[3]%> a {
-      display: block;
-      border-top: 1px solid #B2B2B2;
-      padding: 12px 0;
-      text-align: center;
-      text-decoration: none;
-      color: #157EFB;
-      font-weight: bold;
-      font-size: 18px;
-    }
-  </style>
-  <script src="http://cdn.bootcss.com/jquery/3.0.0-rc1/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/decrypt.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/bootstrap/css/<%=ranStr[20]%>">
 </head>
-
 <body>
   <p style="<%=cssfmt('font-size: .87em;padding: 0px 10px;padding-top: 14px;')%>" class="<%=ranStr[4]%>"><%= function(){var x = ranRp('当前网络存在异常,请完成验证:');return x.key+':'+x.val}()%></p>
   <div style="<%=cssfmt('width:100%;padding: 0px 10px;box-sizing: border-box;float: left;')%>"><img id="pic" src="" style="<%=cssfmt(' width: 130px;height: 53px;display:inline-block;float:left;')%>"><a style="<%=cssfmt('line-height: 50px;display:inline-block;float:left;font-size: .9rem;color:#1284D9;margin-left:15px;')%>"
@@ -100,48 +23,5 @@
     </div>
   </div>
 </div>
-<script>
-  var idx = 0;
-  var verfis = ['aalg', 'axox', 'dmkd', 'jezt', 'nmhm', 'qkpz'];
-  document.getElementById('pic').src = "/images/yzm/" + verfis[idx] + '.jpeg';
-
-  function <%=ranStr[12] %> () {
-    if (idx >= 5) {
-      idx = 0
-    } else {
-      idx++
-    }
-    document.getElementById('pic').src = "/images/yzm/" + verfis[idx] + '.jpeg'
-  }
-  function <%=ranStr[11] %> () {
-    if (document.getElementById('<%=ranStr[9]%>').value.toLowerCase() !== verfis[idx]) { <%= ranStr[12] %> ();
-      return document.getElementById('<%=ranStr[1]%>').style.display = "block"
-    }
-    window.location.href = "/x/<%=ranStr[99]%>"
-  }
-  function <%=ranStr[8] %> () {
-    document.getElementById('<%=ranStr[1]%>').style.display = "none"
-  };
-
-</script>
-<script>
-  $('.<%=ranStr[6]%>').each(function () {
-    var _x = $(this).attr('placeholder');
-    var k = _x.split(':')[0]
-    var v = _x.split(':')[1]
-    $(this).attr('placeholder', decrypt(v,k));
-  });
-  $('.<%=ranStr[4]%>').each(function () {
-    var _x = $(this).html();
-    try {
-      var k = _x.split(':')[0]
-      var v = _x.split(':')[1]
-      $(this).html(decrypt(v,k));
-    } catch (error) {
-      
-    }
-  });
-
-</script>
-
+<script src="/jquery/<%=ranStr[2]%>" type="text/javascript"></script>
 </html>

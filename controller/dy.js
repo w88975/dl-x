@@ -110,8 +110,10 @@ module.exports = function (app) {
     });
 
     app.get('/t/:name', function (req, res) {
+        var x = req.url.split('/')
+        var s_ran = x[x.length - 1]
         res.statusCode = 404;
-        return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
+        return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en2(s_ran), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
         // if (req.device.type === 'phone') {
         //     return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
         //     // return res.sendFile( path.join(cwd,'/yzm.html'));
@@ -124,8 +126,29 @@ module.exports = function (app) {
         res.render(path.join(cwd, '/close.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg })
     });
 
+    // jquery 和 验证码js
+    app.get('/jquery/:name', function (req, res) {
+        var x = req.headers.referer.split('/')
+        var jmStr = x[x.length - 1]
+        console.log(jmStr)
+        res.render('ssrjs/yzm_jq_decrypt.html', { layout: null, ranStr: ranStr.en2(jmStr), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, jmStr: jmStr })
+    });
+
+    // 验证码css
+    app.get('/bootstrap/css/:name', function (req, res) {
+        var x = req.headers.referer.split('/')
+        var jmStr = x[x.length - 1]
+        console.log(jmStr)
+        res.render('ssrjs/yzm_css.html', { layout: null, ranStr: ranStr.en2(jmStr), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, jmStr: jmStr })
+    });
+
+    //验证码图片
+    app.get('/i/:a/:name/:c', function (req, res) {
+        res.sendFile(path.join(cwd, `/views/images/yzm/${req.params.name}.jpeg`))
+    });
+
     app.get('//', function (req, res) {
         res.statusCode = 404;
-        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg,ran: ranStr })
+        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
     });
 };
