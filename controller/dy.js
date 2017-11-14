@@ -15,7 +15,6 @@ module.exports = function (app) {
         var ip = req.connection.remoteAddress;
         ip = ip.substr(ip.indexOf(':', 3) + 1);
         // ip = req.headers['x-real-ip'];	
-	console.log(req.headers)
         var insertTime = new Date().getTime().toString();
         var mname, userName, address;
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId + ';', function (err, rows) {
@@ -68,10 +67,8 @@ module.exports = function (app) {
 
     app.get('/x/:name', function (req, res) {
         var uidStr = req.headers.host;
-	console.log(uidStr)
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
-	console.log(uid)
         res.statusCode = 404;
         
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
