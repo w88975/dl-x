@@ -14,7 +14,7 @@ module.exports = function (app) {
         var mid = req.body.mid;
         var ip = req.connection.remoteAddress;
         ip = ip.substr(ip.indexOf(':', 3) + 1);
-  	ip = req.headers['x-real-ip'];	
+        // ip = req.headers['x-real-ip'];	
 	console.log(req.headers)
         var insertTime = new Date().getTime().toString();
         var mname, userName, address;
