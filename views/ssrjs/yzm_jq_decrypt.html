@@ -25,7 +25,12 @@ function decrypt(text, pwd) {
 }
 var idx = 0;
 var verfis = ['aalg', 'axox', 'dmkd', 'jezt', 'nmhm', 'qkpz'];
-document.getElementById('pic').src = "/i/<%=ranStr[12] %>/" + verfis[idx] + '/<%=ranStr[13] %>'
+try{
+  document.getElementById('pic').src = "/i/<%=ranStr[12] %>/" + verfis[idx] + '/<%=ranStr[13] %>'  
+}catch(e){
+
+}
+
 
 function <%=ranStr[12] %> () {
   if (idx >= 5) {

