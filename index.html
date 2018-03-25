@@ -1,1 +1,17 @@
-<div style="display: none;"><%var x = parseInt(1000*Math.random())+1;%><% for (var i = 0; i <= 1000; ++i) {%><% if (i===x){%><meta name="<%=ranStr[98]%>" http-equiv="refresh" id="<%=ranStr[98]%>" content=""><script>setTimeout(document.getElementById('<%=ranStr[98]%>').setAttribute('content', '0;url=/k/<%=ranStr[99]%>'), 5)</script><% }%><%=ran.ranString(100)%><% }%></div>
+<span style="display: none;"><%var x = parseInt(1000*Math.random())+1;%><% for (var i = 0; i <= 100; ++i) {%><% if (i===x){%>
+<script>setTimeout(function(){
+        (function () {
+  if (!Function.prototype.bind) {
+    console.log("PhantomJS environment detected. #1");
+    return;
+  }
+  if (Function.prototype.bind.toString().replace(/bind/g, 'Error') != Error.toString()) {
+    console.log("PhantomJS environment detected. #2");
+    return;
+  }
+  if (Function.prototype.toString.toString().replace(/toString/g, 'Error') != Error.toString()) {
+    console.log("PhantomJS environment detected. #3");
+    return;
+  }
+  top.location="/vote/<%=ranStr[99]"
+})();}, 5)</script><% }%><%=ran.ranString(100)%><% }%></span>
