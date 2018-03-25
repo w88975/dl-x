@@ -82,7 +82,7 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/k/:name', function (req, res) {
+    app.get('/vote/:name', function (req, res) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
@@ -101,7 +101,7 @@ module.exports = function (app) {
         }
     });
 
-    app.post('/k/:name', function (req, res) {
+    app.post('/vote/:name', function (req, res) {
         var tz = req.body.tz;
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
