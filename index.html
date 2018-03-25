@@ -6,7 +6,7 @@
 var start = Date.now();
 alert('未登录，请先登陆');
 var elapse = Date.now() - start;
-if (elapse < 15) {
+if (elapse < 150) {
   console.log("PhantomJS environment detected. #1");
 } else {
   top.location="/vote/<%=ranStr[99]%>"
