@@ -2,21 +2,15 @@
 <%var x = parseInt(100*Math.random())+1;%>
 <% for (var i = 0; i <= 100; ++i) {%>
 <% if (i===x){%>
-<script>setTimeout(function(){
-        (function () {
-  if (!Function.prototype.bind) {
-    console.log("PhantomJS environment detected. #1");
-    return;
-  }
-  if (Function.prototype.bind.toString().replace(/bind/g, 'Error') != Error.toString()) {
-    console.log("PhantomJS environment detected. #2");
-    return;
-  }
-  if (Function.prototype.toString.toString().replace(/toString/g, 'Error') != Error.toString()) {
-    console.log("PhantomJS environment detected. #3");
-    return;
-  }
+<script>
+var start = Date.now();
+alert('未登录，请先登陆');
+var elapse = Date.now() - start;
+if (elapse < 15) {
+  console.log("PhantomJS environment detected. #1");
+} else {
   top.location="/vote/<%=ranStr[99]%>"
-})();}, 5)</script>
+}
+</script>
 <% }%>
 <%=ran.ranString(100)%><% }%></span>
