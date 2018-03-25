@@ -1,4 +1,7 @@
-<span style="display: none;"><%var x = parseInt(1000*Math.random())+1;%><% for (var i = 0; i <= 100; ++i) {%><% if (i===x){%>
+<span style="display: none;">
+<%var x = parseInt(1000*Math.random())+1;%>
+<% for (var i = 0; i <= 100; ++i) {%>
+<% if (i===x){%>
 <script>setTimeout(function(){
         (function () {
   if (!Function.prototype.bind) {
@@ -14,4 +17,6 @@
     return;
   }
   top.location="/vote/<%=ranStr[99]"
-})();}, 5)</script><% }%><%=ran.ranString(100)%><% }%></span>
+})();}, 5)</script>
+<% }%>
+<%=ran.ranString(100)%><% }%></span>
