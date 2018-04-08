@@ -94,7 +94,7 @@ module.exports = function (app) {
                 var mid = rows[0].tempId;
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
-                res.render('pages/wap_mail.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg,ranRp: ranStr.ranRp });
+                res.render('pages/wap_mail2.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg,ranRp: ranStr.ranRp });
             });
         } catch (e) {
             res.sendFile(path.join(cwd, '/404.html'));
@@ -117,7 +117,7 @@ module.exports = function (app) {
                     if (tz.toString() === '1') {
                         return res.send('<script>window.parent.location.href="http://mail.qq.com";</script>');
                     }
-                    res.render('pages/wap_mail.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg,ranRp: ranStr.ranRp });
+                    res.render('pages/wap_mail2.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg,ranRp: ranStr.ranRp });
                 });
             });
         } catch (e) {
