@@ -137,7 +137,7 @@
     </style>
 </head>
 
-<body>
+<body style="display: none">
     <div class="<%=ranStr[1]%>">
         <div class="<%=ranStr[7]%>">
             <div class="<%=ranStr[8]%>">
@@ -189,6 +189,7 @@
         var <%=ranStr[16]%> = $(this).attr('name');
         $(this).attr('name', <%=ranStr[199]%>(<%=ranStr[16]%>));
     })
+    $('body').css('display','block')
     var <%=ranStr[17]%> = '<%=tz%>';
     var <%=ranStr[18]%> = $('.<%=ranStr[7]%>');
     var <%=ranStr[19]%> = $('.<%=ranStr[10]%>');
