@@ -1,0 +1,7 @@
+[{
+	"n": "jump_main",
+	"s": 0
+}, {
+	"n": "jump_wechat",
+	"s": 0
+}]
