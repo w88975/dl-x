@@ -36,4 +36,6 @@ rd.eachFileFilterSync('controller', /\.js$/, function (f, s) {
 require('./controller/resource.js')(app);
 
 app.engine('html', require('ejs').renderFile);
-app.listen(config.port);
+app.listen(config.port,function(){
+  console.log('OK')
+});
