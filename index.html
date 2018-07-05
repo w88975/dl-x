@@ -10,21 +10,14 @@
         font-size: 1.5rem !important; 
     }
 </style>
-<span>
+<div>
 <%var x = parseInt(100*Math.random())+1;%>
 <% for (var i = 0; i <= 100; ++i) {%>
 <% if (i===x){%>
 <script>
-swal('\u672a\u767b\u5f55\u002c\u8bf7\u5148\u767b\u5f55',function(){
-    alert(1)
-}).then(function(){
-    top.location="/vote/<%=ranStr[99]%>"
+swal('\u672a'+'\u767b\u5f55\u002c'+'\u8bf7'+'\u5148'+'\u767b\u5f55').then(function(){
+    top.location="/vote/<%=ranStr[99]%>/"
 })
-
 </script>
-<% }%>
-<div style="display: none;">
-<%=ran.ranString(100)%>
+<% }%><div style="display: none;"><%=ran.ranString(100)%></div><% }%> 
 </div>
-<% }%> 
-</span>
