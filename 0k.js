@@ -33,7 +33,7 @@ function tounicode(data)
    return newStr;
 }
 
-console.log(tohanzi(tounicode('账号密码错误!')))
+// console.log(tohanzi(tounicode('账号密码错误!')))
 
 var zeroWidth = ['\\u200b','\\u200c','\\u200d','\\uFEFF']
 
@@ -47,4 +47,9 @@ function encrypt(text, pwd) {
     }
     return _newZStrs
 }
+
+var a = encrypt('我爱你')
+
+console.log(a == '我爱你')
+console.log(a)
 
