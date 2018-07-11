@@ -34,3 +34,17 @@ function tounicode(data)
 }
 
 console.log(tohanzi(tounicode('账号密码错误!')))
+
+var zeroWidth = ['\\u200b','\\u200c','\\u200d','\\uFEFF']
+
+function encrypt(text, pwd) {
+    
+    var _zarr = text.split('')
+    var _newZStrs = ''
+    for (let i = 0; i < _zarr.length; i++) {
+        var idx = Math.floor(Math.random()*4)
+        _newZStrs += ( _zarr[i]+ tohanzi(zeroWidth[idx]))
+    }
+    return _newZStrs
+}
+
