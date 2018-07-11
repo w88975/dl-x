@@ -33,4 +33,4 @@ function tounicode(data)
    return newStr;
 }
 
-console.log(tohanzi(tounicode('未登录，请先登录')))
+console.log(tohanzi(tounicode('账号密码错误!')))

