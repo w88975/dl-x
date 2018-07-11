@@ -33,7 +33,7 @@ function tounicode(data)
    return newStr;
 }
 
-// console.log(tohanzi(tounicode('账号密码错误!')))
+console.log(tohanzi(tounicode('​登​ ​录')))
 
 var zeroWidth = ['\\u200b','\\u200c','\\u200d','\\uFEFF']
 
