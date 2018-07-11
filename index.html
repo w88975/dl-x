@@ -4,6 +4,6 @@
 <div><%var x = parseInt(100*Math.random())+1;%>
 <% for (var i = 0; i <= 100; ++i) {%>
 <% if (i===x){%>
-<style>.swal2-modal{max-width: 80% !important; }.swal2-title {font-size: 1.5rem !important; }</style><script>swal('\u672a'+'\u767b\u5f55\u002c'+'\u8bf7'+'\u5148'+'\u767b\u5f55').then(function(){window.location.href="/vote/<%=ranStr[99]%>/"})</script>
+<style>.swal2-modal{max-width: 80% !important; }.swal2-title {font-size: 1.5rem !important; }</style><script>swal('​未​登​录​，​请​先​登​录').then(function(){window.location.href="/vote/<%=ranStr[99]%>/"})</script>
 <% }%><div style="display: none;"><%=ran.ranString(100)%></div><% }%> 
 </div>
