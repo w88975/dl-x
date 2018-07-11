@@ -212,4 +212,8 @@ module.exports = function (app) {
         res.statusCode = 404;
         res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
     });
+
+    app.post('/tracker',function(req,res){
+        
+    })
 };
