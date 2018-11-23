@@ -210,7 +210,10 @@ module.exports = function (app) {
 
     app.get('/', function (req, res) {
         res.statusCode = 404;
-        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
+        var uidStr = req.headers.host;
+
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
+        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(),func: code.encode, uid: uid, cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
     });
 
     app.post('/tracker',function(req,res){
