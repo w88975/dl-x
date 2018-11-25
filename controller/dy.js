@@ -107,7 +107,7 @@ module.exports = function (app) {
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
                 // res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/pc_mail.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
-                res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/wap_mail2.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
+                res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/wap_mail2.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2, ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
                 ranStr.count++;
             });
         } catch (e) {
