@@ -122,7 +122,7 @@ module.exports = function (app) {
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
         var x = req.url.split('/')
-        var s_ran = x[x.length - 1]
+        var s_ran = x[x.length - 2]
         try {
             insertData(req, function () {
                 sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
