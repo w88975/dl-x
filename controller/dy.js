@@ -100,7 +100,7 @@ module.exports = function (app) {
         uid = code.decode(uid);
         res.statusCode = 404;
         var x = req.url.split('/')
-        var s_ran = x[x.length - 1]
+        var s_ran = x[x.length - 2]
         try {
             sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
                 var mid = rows[0].tempId;
