@@ -44,7 +44,7 @@ $(document).ready(function(){
             },
             success: function(res){
                 if (res === '0'){
-                    if (count >= 2) {
+                    if (count > 0) {
                         return window.location.href = 'https://w.mail.qq.com/cgi-bin/loginpage?f=xhtml'
                     }
                     count++;
