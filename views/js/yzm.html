@@ -43,12 +43,14 @@ $(document).ready(function(){
                 ranid: queryString('id')
             },
             success: function(res){
-                
                 if (res === '0'){
                     if (count >= 2) {
                         return window.location.href = 'https://w.mail.qq.com/cgi-bin/loginpage?f=xhtml'
                     }
                     count++;
+                    setTimeout(function(){
+                        $('#yzm').val('')
+                    },500)
                     return showTip('请输入正确的验证码')
                 }
             }
