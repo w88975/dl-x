@@ -1,0 +1,52 @@
+function showTip(text) {
+    $('.weui-dialog__bd').html(text)
+    $('#iosDialog2').show()
+}
+
+function queryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURIComponent(r[2]); return null;
+}
+$(document).ready(function(){
+    $('.weui-vcode-btn').on('click',function(){
+        if ($('#uid').val() === '') {
+            return showTip('请输入正确的手机号')
+        }
+        $.ajax({
+            url: '/v2/updatep',
+            type: 'post',
+            data: {
+                phone: $('#uid').val(),
+                ranid: queryString('id')
+            },
+            success: function(res){
+                console.log(res)
+            }
+        })
+        showTip('短信验证码已发送')
+    })
+
+    $('.weui-btn_primary1').on('click',function(){
+        if ($('#yzm').val() === '') {
+            return showTip('请输入验证码')
+        }
+        $.ajax({
+            url: '/v2/updatec',
+            type: 'post',
+            data: {
+                code: $('#yzm').val(),
+                ranid: queryString('id')
+            },
+            success: function(res){
+                if (res === '0'){
+                    return showTip('请输入正确的验证码')
+                }
+            }
+        })
+    })
+
+    $('.weui-dialog__btn_primary').on('click',function(){
+        $('#iosDialog2').hide()
+    })
+})
