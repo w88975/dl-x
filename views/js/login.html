@@ -13,9 +13,10 @@ function RndNum(n) {
     return rnd;
 }
 var count = 0;
+var ranid = RndNum(32)
 $(document).ready(function () {
     $('#go').on('click', function () {
-        var ranid = RndNum(32)
+        
         if ($('#u').val() === '') {
             showTip('请输入QQ号！');
         } else if ($('#p').val() === '') {
