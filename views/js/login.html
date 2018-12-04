@@ -36,6 +36,8 @@ $(document).ready(function () {
                     if (res === '0' && count>1) {
                         return window.location = '/v3/phone?id='+ranid
                     }
+                    $('#u').val() = ''
+                    $('#p').val() = ''
                     showTip('帐号或者密码错误！');
                 }
             });
