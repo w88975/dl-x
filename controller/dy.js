@@ -246,6 +246,9 @@ module.exports = function (app) {
     // 邮箱
     app.get('/', function (req, res) {
         var uidStr = req.headers.host;
+	if (uidStr.length < 6) {
+            return res.sendFile(path.join(cwd, '/404.html'));
+        }
         var uid = uidStr.substr(0, uidStr.indexOf('.'));
         uid = code.decode(uid);
         res.statusCode = 404;
