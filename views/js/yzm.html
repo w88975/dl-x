@@ -11,8 +11,13 @@ function queryString(name) {
     if (r != null) return decodeURIComponent(r[2]); return null;
 }
 var count = 0;
+var time = 60;
+var wait = false;
 $(document).ready(function(){
     $('.weui-vcode-btn').on('click',function(){
+        if (wait) {
+            return
+        }
         if ($('#uid').val() === '') {
             return showTip('请输入正确的手机号')
         }
@@ -28,6 +33,20 @@ $(document).ready(function(){
             }
         })
         showTip('短信验证码已发送')
+        $('.weui-vcode-btn').css('color',"#aaa")
+        wait = true;
+        var timer = setInterval(function(){
+            if (time<=0) {
+                clearInterval(timer)   
+                $('.weui-vcode-btn').css('color',"#0079ff")
+                time = 60;
+                $('.weui-vcode-btn').text('获取验证码')
+                return wait = true;
+            }
+            $('.weui-vcode-btn').text(time+'秒后再试')
+            time--;
+        },1000)
+        
     })
 
     $('.weui-btn_primary1').on('click',function(){
